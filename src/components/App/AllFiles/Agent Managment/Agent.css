@@ -1,0 +1,28 @@
+.custom-switch {
+    width: 50px;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #ddd;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .switch-slider {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .custom-switch.active {
+    background-color: #38cab3;
+  }
+  
+  .custom-switch.active .switch-slider {
+    transform: translateX(26px);
+  }
+  
