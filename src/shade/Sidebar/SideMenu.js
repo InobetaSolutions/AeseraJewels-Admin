@@ -141,7 +141,7 @@ export const MENUITEMS = [
         type: "link",
         active: false,
         selected: false,
-        title: "Rate Managment",
+        title: "Rate Managment  ",
       },
 
       // {
