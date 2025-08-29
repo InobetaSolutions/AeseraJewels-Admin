@@ -1,75 +1,130 @@
 import React, { useState } from "react";
-import { Card, Form, Button, Alert, Spinner } from "react-bootstrap";
+import { Card, Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../../../../service";
 
-const AddAMC = () => {
-  const [amcValue, setAmcValue] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+export default function Addamc() {
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    tagid: "",
+    description: "",
+    goldtype: "",
+    price: "",
+  });
+  const [file, setFile] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
-    setSuccessMessage("");
+
+    const fd = new FormData();
+    if (file) fd.append("image", file);
+    fd.append("tagid", formData.tagid);
+    fd.append("description", formData.description);
+    fd.append("goldtype", formData.goldtype);
+    fd.append("price", formData.price);
 
     try {
-      const response = await fetch(API_URL + "AdminAddAMC", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ AMC: amcValue }),
-      });
+      const response = await fetch(
+        "http://13.204.96.244:3000/api/create-products",
+        {
+          method: "POST",
+          body: fd,
+        }
+      );
 
-      const result = await response.json();
+      const text = await response.text();
+      console.log("Create Product Response:", text);
+      alert("Product added successfully!");
 
-      if (result.Status === 200 && result.response) {
-        setSuccessMessage("AMC added successfully!");
-        setAmcValue(""); // Reset input field
-        setTimeout(() => {
-          navigate("/app/PlanManagement"); // Navigate after success
-        }, 1500);
-      } else {
-        setError("Failed to add AMC.");
-      }
+      // Redirect back to Catalog
+      navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`);
     } catch (err) {
-      setError("Error while adding AMC.");
-    } finally {
-      setLoading(false);
+      console.error("Error:", err);
+      alert("❌ Failed to add product");
     }
   };
 
   return (
     <Card>
       <Card.Body>
-        <h3 className="text-primary mb-4">Add AMC</h3>
-
-        {successMessage && <Alert variant="success">{successMessage}</Alert>}
-        {error && <Alert variant="danger">{error}</Alert>}
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h5 className="text-primary">Add Product</h5>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`)
+            }
+          >
+            Back
+          </Button>
+        </div>
 
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
-            <Form.Label>AMC Value</Form.Label>
+            <Form.Label>Image</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Enter AMC"
-              value={amcValue}
-              onChange={(e) => setAmcValue(e.target.value)}
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
               required
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit" disabled={loading}>
-            {loading ? <Spinner size="sm" animation="border" /> : "Add AMC"}
+          <Form.Group className="mb-3">
+            <Form.Label>Tag ID</Form.Label>
+            <Form.Control
+              type="text"
+              name="tagid"
+              value={formData.tagid}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              type="text"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Gold Type</Form.Label>
+            <Form.Control
+              type="text"
+              name="goldtype"
+              value={formData.goldtype}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Price</Form.Label>
+            <Form.Control
+              type="number"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Button type="submit" className="btn-primary">
+            Add Product
           </Button>
         </Form>
       </Card.Body>
     </Card>
   );
-};
-
-export default AddAMC;
+}

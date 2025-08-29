@@ -1,9 +1,13 @@
+// Catalog.js
 import React, { Fragment, useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { useTable, useSortBy, useGlobalFilter, usePagination } from "react-table";
+import { useNavigate } from "react-router-dom";
+import "./Catalog.css"; // <-- import CSS file for hover styles
 
-export default function GetProducts() {
+export default function Catalog() {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
@@ -13,8 +17,8 @@ export default function GetProducts() {
     try {
       const response = await fetch("http://13.204.96.244:3000/api/get-products", {
         method: "GET",
-        redirect: "follow",
       });
+
       const text = await response.text();
       console.log("Raw API Response:", text);
 
@@ -36,6 +40,11 @@ export default function GetProducts() {
     }
   };
 
+  // Handle Add Product navigation
+  const handleAddProduct = () => {
+    navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment/Addamc`);
+  };
+
   // Dynamic Columns
   const COLUMNS = React.useMemo(() => {
     if (data.length === 0) return [];
@@ -47,9 +56,9 @@ export default function GetProducts() {
           accessor: key,
           Cell: ({ value }) => (
             <img
-              src={`http://13.204.96.244:3000/uploads/${value}`}
+              src={`http://13.204.96.244:3000/api/uploads/${value}`}
               alt="product"
-              style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "6px" }}
+              className="product-img-hover"
             />
           ),
         };
@@ -58,7 +67,8 @@ export default function GetProducts() {
         Header: key === "serial" ? "S.No" : key.charAt(0).toUpperCase() + key.slice(1),
         accessor: key,
         className: "wd-20p borderrigth",
-        Cell: ({ value }) => (value !== null && value !== undefined ? value.toString() : "—"),
+        Cell: ({ value }) =>
+          value !== null && value !== undefined ? value.toString() : "—",
       };
     });
   }, [data]);
@@ -93,6 +103,7 @@ export default function GetProducts() {
     <Fragment>
       <Card>
         <Card.Body>
+          {/* Title + Add Product */}
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div
               className="card-title main-content-label text-primary"
@@ -100,8 +111,16 @@ export default function GetProducts() {
             >
               Products
             </div>
+            <Button
+              variant="primary"
+              onClick={handleAddProduct}
+              className="me-2"
+            >
+              Add Product
+            </Button>
           </div>
 
+          {/* Page Size Selector */}
           <div className="d-flex">
             <select
               className="mb-4 selectpage border me-1"
@@ -116,6 +135,7 @@ export default function GetProducts() {
             </select>
           </div>
 
+          {/* Table */}
           <div className="table-responsive">
             <table {...getTableProps()} className="table table-hover mb-0">
               <thead>
@@ -149,6 +169,7 @@ export default function GetProducts() {
             </table>
           </div>
 
+          {/* Pagination */}
           <div className="d-block d-sm-flex mt-4">
             <span>
               Page{" "}
