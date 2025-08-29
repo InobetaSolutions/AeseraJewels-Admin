@@ -3,13 +3,13 @@
   height: 60px;
   object-fit: cover;
   border-radius: 6px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   cursor: pointer;
 }
 
 .product-img-hover:hover {
-  transform: scale(1.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(2); /* 🚀 2x bigger on hover */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
   z-index: 10;
   position: relative;
 }

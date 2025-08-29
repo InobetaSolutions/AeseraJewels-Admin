@@ -15,39 +15,37 @@ export default function GetCurrentRate() {
         method: "GET",
         redirect: "follow",
       });
-      const text = await response.text();
-      console.log("Raw API Response:", text);
 
-      try {
-        const result = JSON.parse(text);
-        const rates = Array.isArray(result) ? result : [result];
-
-        setData(
-          rates.map((rate, index) => ({
-            serial: index + 1,
-            ...rate, // keep dynamic fields
-          }))
-        );
-      } catch (err) {
-        console.error("JSON parse error:", err);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
+      const result = await response.json(); // API already returns JSON
+      console.log("API Data:", result);
+
+      const rates = Array.isArray(result) ? result : [result];
+
+      setData(
+        rates.map((rate, index) => ({
+          serial: index + 1,
+          GramPrice: rate.price_gram_24k ?? "—", // ✅ fixed key
+          Timestamp: rate.istDate ?? "—",        // ✅ fixed key
+        }))
+      );
     } catch (error) {
       console.error("Error fetching rates:", error);
     }
   };
 
-  // Dynamic Columns
-  const COLUMNS = React.useMemo(() => {
-    if (data.length === 0) return [];
-
-    const headers = Object.keys(data[0]);
-    return headers.map((key) => ({
-      Header: key === "serial" ? "S.No" : key.charAt(0).toUpperCase() + key.slice(1),
-      accessor: key,
-      className: "wd-20p borderrigth",
-      Cell: ({ value }) => (value !== null && value !== undefined ? value.toString() : "—"),
-    }));
-  }, [data]);
+  // ✅ Static Columns
+  const COLUMNS = React.useMemo(
+    () => [
+      { Header: "S.No", accessor: "serial", className: "wd-20p borderrigth" },
+      { Header: "Gram Price", accessor: "GramPrice", className: "wd-20p borderrigth" },
+      { Header: "Timestamp", accessor: "Timestamp", className: "wd-20p borderrigth" },
+    ],
+    []
+  );
 
   const tableInstance = useTable(
     { columns: COLUMNS, data },

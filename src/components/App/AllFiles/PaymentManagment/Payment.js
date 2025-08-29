@@ -27,7 +27,7 @@ export default function GetPayments() {
         Header: "Status",
         accessor: "status",
         Cell: ({ value }) => (
-          <span className={value === "approved" ? "text-success fw-bold" : "text-danger fw-bold"}>
+          <span className={value === "Approved" ? "text-success fw-bold" : "text-danger fw-bold"}>
             {value}
           </span>
         ),
@@ -37,7 +37,7 @@ export default function GetPayments() {
         Header: "Actions",
         accessor: "actions",
         Cell: ({ row }) =>
-          row.original.status !== "approved" ? (
+          row.original.status !== "Approved" ? (
             <Button
               variant="primary"
               size="sm"
@@ -71,7 +71,7 @@ export default function GetPayments() {
             id: p._id || index,
             mobile: p.mobile || "N/A",
             amount: p.amount || 0,
-            status: p.status || "pending",
+            status: p.status || "Pending",
           }))
         );
       }
@@ -83,10 +83,10 @@ export default function GetPayments() {
   const approvePayment = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
-      text: "You are about to approve this payment.",
+      text: "Hope, You Verified the Payment.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, approve it!",
+      confirmButtonText: "Verified!",
       cancelButtonText: "Cancel",
       confirmButtonColor: "#007bff",
     });
@@ -102,12 +102,12 @@ export default function GetPayments() {
         });
 
         setData((prev) =>
-          prev.map((p) => (p.id === id ? { ...p, status: "approved" } : p))
+          prev.map((p) => (p.id === id ? { ...p, status: "Approved" } : p))
         );
 
         Swal.fire({
           title: "Success!",
-          text: "Payment has been approved successfully.",
+          text: "Payment has been Approved successfully.",
           icon: "success",
           timer: 1500,
         });
