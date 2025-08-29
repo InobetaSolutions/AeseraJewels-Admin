@@ -496,6 +496,11 @@ root.render(
                 path={`${process.env.PUBLIC_URL}/app/CatalogManagment`}
                 element={<CatalogManagment />}
               />
+
+               <Route
+                path={`${process.env.PUBLIC_URL}/app/CatalogManagment/Addamc`}
+                element={<Addamc />}
+              />
               <Route
                 path={`${process.env.PUBLIC_URL}/app/contacts`}
                 element={<Contacts />}
