@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Addamc() {
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     tagid: "",
     description: "",
@@ -13,6 +12,7 @@ export default function Addamc() {
   });
   const [file, setFile] = useState(null);
 
+  // Handle text input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -20,11 +20,15 @@ export default function Addamc() {
     });
   };
 
+  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const fd = new FormData();
-    if (file) fd.append("image", file);
+    if (file) {
+      // ✅ only file + name (no C:/ path!)
+      fd.append("image", file, file.name);
+    }
     fd.append("tagid", formData.tagid);
     fd.append("description", formData.description);
     fd.append("goldtype", formData.goldtype);
@@ -39,11 +43,10 @@ export default function Addamc() {
         }
       );
 
-      const text = await response.text();
-      console.log("Create Product Response:", text);
-      alert("Product added successfully!");
+      const result = await response.json(); // ✅ parse JSON, not just text
+      console.log("Create Product Response:", result);
 
-      // Redirect back to Catalog
+      alert("Product added successfully!");
       navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`);
     } catch (err) {
       console.error("Error:", err);

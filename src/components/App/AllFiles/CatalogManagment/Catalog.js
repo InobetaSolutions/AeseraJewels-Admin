@@ -1,7 +1,12 @@
 // Catalog.js
 import React, { Fragment, useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import { useTable, useSortBy, useGlobalFilter, usePagination } from "react-table";
+import {
+  useTable,
+  useSortBy,
+  useGlobalFilter,
+  usePagination,
+} from "react-table";
 import { useNavigate } from "react-router-dom";
 import "./Catalog.css"; // <-- import CSS file for hover styles
 
@@ -15,9 +20,12 @@ export default function Catalog() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://13.204.96.244:3000/api/get-products", {
-        method: "GET",
-      });
+      const response = await fetch(
+        "http://13.204.96.244:3000/api/get-products",
+        {
+          method: "GET",
+        }
+      );
 
       const text = await response.text();
       console.log("Raw API Response:", text);
@@ -27,10 +35,18 @@ export default function Catalog() {
         const products = Array.isArray(result) ? result : [result];
 
         setData(
-          products.map((product, index) => ({
-            serial: index + 1,
-            ...product,
-          }))
+          products.map((product, index) => {
+            // Remove unwanted keys
+            const { _id, __v, createdAt, updatedAt, ...rest } = product;
+
+            return {
+              serial: index + 1,
+              ...rest,
+              ...(createdAt
+                ? { IstDate: new Date(createdAt).toLocaleString("en-IN") }
+                : {}),
+            };
+          })
         );
       } catch (err) {
         console.error("JSON parse error:", err);
