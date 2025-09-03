@@ -58,15 +58,30 @@ export default function Addamc() {
     <Card>
       <Card.Body>
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h5 className="text-primary">Add Product</h5>
-          <Button
+          <h5 style={{ color: "#082038" }}>Add Product</h5>
+          {/* <h5 className="text-primary">Add Product</h5> */}
+          {/* <Button
             variant="secondary"
             onClick={() =>
               navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`)
             }
           >
             Back
-          </Button>
+          </Button> */}
+            <button
+            style={{
+              backgroundColor: "#082038",
+              borderColor: "#082038",
+              color: "#fff",
+              boxShadow: "none",
+            }}
+          
+            onClick={() =>
+              navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`)
+            }
+          >
+            Back
+          </button>
         </div>
 
         <Form onSubmit={handleSubmit}>
@@ -123,9 +138,21 @@ export default function Addamc() {
             />
           </Form.Group>
 
-          <Button type="submit" className="btn-primary">
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "#082038",
+              borderColor: "#082038",
+              color: "#fff",
+              boxShadow: "none",
+            }}
+          >
             Add Product
-          </Button>
+          </button>
+
+          {/* <Button type="submit" className="btn-primary">
+            Add Product
+          </Button> */}
         </Form>
       </Card.Body>
     </Card>
