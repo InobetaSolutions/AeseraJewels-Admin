@@ -234,10 +234,6 @@
 //   );
 // }
 
-
-
-
-
 import React, { Fragment, useEffect, useState } from "react";
 import { Card, Button, OverlayTrigger, Popover } from "react-bootstrap"; // ✅ added OverlayTrigger & Popover
 import {
@@ -348,7 +344,9 @@ export default function Catalog() {
       }
       return {
         Header:
-          key === "serial" ? "S.No" : key.charAt(0).toUpperCase() + key.slice(1),
+          key === "serial"
+            ? "S.No"
+            : key.charAt(0).toUpperCase() + key.slice(1),
         accessor: key,
         className: "wd-20p borderrigth",
         Cell: ({ value }) =>
@@ -390,8 +388,31 @@ export default function Catalog() {
           {/* Title + Add Product */}
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div
+              className="card-title main-content-label"
+              style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
+            >
+              Products
+            </div>
+            <button
+              onClick={handleAddProduct}
+              className="me-2"
+              style={{
+                backgroundColor: "#082038",
+                border: "1px solid #082038",
+                color: "#fff",
+                padding: "0.375rem 0.75rem",
+                borderRadius: "0.25rem",
+                cursor: "pointer",
+              }}
+            >
+              Add Product
+            </button>
+          </div>
+
+          {/* <div className="d-flex justify-content-between align-items-center mb-4">
+            <div
               className="card-title main-content-label text-primary"
-              style={{ fontSize: "1.25rem", paddingLeft: 10 }}
+              style={{ fontSize: "1.25rem", paddingLeft: 10 ,}}
             >
               Products
             </div>
@@ -402,7 +423,7 @@ export default function Catalog() {
             >
               Add Product
             </Button>
-          </div>
+          </div> */}
 
           {/* Page Size Selector */}
           <div className="d-flex">
@@ -428,7 +449,9 @@ export default function Catalog() {
                     {headerGroup.headers.map((column) => (
                       <th
                         className={column.className}
-                        {...column.getHeaderProps(column.getSortByToggleProps())}
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
                       >
                         {column.render("Header")}
                       </th>

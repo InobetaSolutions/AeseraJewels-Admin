@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 const SignIn = () => {
   const [err, setError] = useState("");
   const [data, setData] = useState({
-    email: "AeseraJewelsAdmin@gmail.com",
-    password: "AeseraJewels@123",
+    email: "GoldPointAdmin@gmail.com",
+    password: "GoldPointAdmin@123",
   });
   const { email, password } = data;
 
@@ -21,8 +21,8 @@ const SignIn = () => {
   const routeChange = () => {
     let path = `${process.env.PUBLIC_URL}/dashboard/dashboard-1/`;
     if (
-      data.email === "AeseraJewelsAdmin@gmail.com" &&
-      data.password === "AeseraJewels@123"
+      data.email === "GoldPointAdmin@gmail.com" &&
+      data.password === "GoldPointAdmin@123"
     ) {
       navigate(path);
     } else {

@@ -141,8 +141,8 @@ export default function GetUsers() {
         <Card.Body>
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div
-              className="card-title main-content-label text-primary"
-              style={{ fontSize: "1.25rem", paddingLeft: 10 }}
+              className="card-title main-content-label"
+              style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
             >
               User List
             </div>

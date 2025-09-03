@@ -47,10 +47,10 @@ export default function HomePage() {
   return (
     <Fragment>
       <div className="p-3">
-        <div
-          className="card-title mb-4 main-content-label text-primary"
-          style={{ fontSize: "1.5rem", paddingLeft: 10 }}
-        >
+       <div
+              className="card-title main-content-label"
+              style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
+            >
           Dashboard
         </div>
         <Row className="gy-4">
