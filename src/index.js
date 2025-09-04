@@ -330,8 +330,8 @@ const UserManagement = React.lazy(() =>
 const PaymentManagment = React.lazy(() =>
   import("./components/App/AllFiles/PaymentManagment/Payment.js")
 );
-const InvesmentMangement = React.lazy(() =>
-  import("./components/App/AllFiles/Invesment Managment/Invesment")
+const RateMangement = React.lazy(() =>
+  import("./components/App/AllFiles/RateManagment/Invesment.js")
 );
 const ExpensiveManagement = React.lazy(() =>
   import("./components/App/AllFiles/Expensive Managment/Expensive")
@@ -345,8 +345,14 @@ const PaymentManagemnt = React.lazy(() =>
 const ReportMangement = React.lazy(() =>
   import("./components/App/AllFiles/Report Managment/Report")
 );
-const CatogeryExpensive = React.lazy(() =>
-  import("./components/App/AllFiles/CatogeryExpansive/CatogeryExpensive")
+const AllotmentManagement = React.lazy(() =>
+  import("./components/App/AllFiles/AllotmentManagement/CatogeryExpensive.js")
+);
+const ContactManagement = React.lazy(() =>
+  import("./components/App/AllFiles/ContactManagement/Contact.js")
+);
+const AddContact = React.lazy(() =>
+  import("./components/App/AllFiles/ContactManagement/AddContact.js")
 );
 const ProfitManagement = React.lazy(() =>
   import("./components/App/AllFiles/ProfitManagement/Profit")
@@ -367,7 +373,7 @@ const Addamc = React.lazy(() =>
   import("./components/App/AllFiles/CatalogManagment/Addamc.js")
 );
 const Addbanners = React.lazy(() =>
-  import("./components/App/AllFiles/CatogeryExpansive/Addbanners.js")
+  import("./components/App/AllFiles/AllotmentManagement/Addbanners.js")
 );
 
 const AuthLogin = React.lazy(() => import("./Authentication/Login"));
@@ -434,8 +440,8 @@ root.render(
               />
 
               <Route
-                path={`${process.env.PUBLIC_URL}/app/InvesmentMangement`}
-                element={<InvesmentMangement />}
+                path={`${process.env.PUBLIC_URL}/app/RateMangement`}
+                element={<RateMangement />}
               />
 
               <Route
@@ -444,8 +450,18 @@ root.render(
               />
 
               <Route
-                path={`${process.env.PUBLIC_URL}/app/CatogeryExpensive`}
-                element={<CatogeryExpensive />}
+                path={`${process.env.PUBLIC_URL}/app/AllotmentManagement`}
+                element={<AllotmentManagement />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/ContactManagement`}
+                element={<ContactManagement />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/AddContact`}
+                element={<AddContact />}
               />
 
               <Route
