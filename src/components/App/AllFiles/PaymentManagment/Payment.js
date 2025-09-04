@@ -328,12 +328,28 @@ export default function GetPayments() {
         accessor: "mobile",
         className: "wd-20p borderrigth",
       },
+       
       {
         Header: "Amount",
         accessor: "amount",
         Cell: ({ value }) => `₹ ${value.toLocaleString()}`,
         className: "wd-20p borderrigth",
       },
+      // {
+      //   Header: "OthersMobile",
+      //   accessor: "others",
+      //   className: "wd-20p borderrigth",
+      // },
+      // {
+      //   Header: "OthersRupees",
+      //   accessor: "totalAmount",
+      //   className: "wd-20p borderrigth",
+      // },
+      // {
+      //   Header: "OthersGrams",
+      //   accessor: "totalGrams",
+      //   className: "wd-20p borderrigth",
+      // },
       {
         Header: "Status",
         accessor: "status",
@@ -426,6 +442,9 @@ export default function GetPayments() {
             serial: index + 1,
             id: p._id || index,
             mobile: p.mobile || "N/A",
+            // others: p.others || "N/A",
+            //  totalAmount: p.totalAmount || "N/A",
+            //   totalGrams: p.totalGrams || "N/A",
             amount: p.amount || 0,
             name: p.name || "N/A",
             status: p.status || "Pending",

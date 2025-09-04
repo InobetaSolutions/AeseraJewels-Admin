@@ -49,7 +49,7 @@ export const MENUITEMS = [
     menutitle: "WEB APPS",
     Items: [
       {
-        title: "Management",
+        title: <span style={{ color: "#082038" }}>User Management</span>,
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,21 +58,20 @@ export const MENUITEMS = [
             height="24"
             viewBox="0 0 24 24"
           >
-            <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
           </svg>
         ),
-        type: "sub",
-        selected: false,
-        active: false,
         path: `${process.env.PUBLIC_URL}/app/UserMangement`,
         type: "link",
         active: false,
         selected: false,
-        title: "User Management",
       },
 
-        {
-        title: "Management",
+      {
+        title: <span style={{ color: "#082038" }}>Catalog Management</span>,
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -81,22 +80,20 @@ export const MENUITEMS = [
             height="24"
             viewBox="0 0 24 24"
           >
-           <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
           </svg>
         ),
-        type: "sub",
-        selected: false,
-        active: false,
         path: `${process.env.PUBLIC_URL}/app/CatalogManagment`,
         type: "link",
         active: false,
         selected: false,
-        title: "Catalog Management ",
       },
 
-
       {
-        title: "Management",
+        title: <span style={{ color: "#082038" }}>Payment Management</span>,
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,24 +102,20 @@ export const MENUITEMS = [
             height="24"
             viewBox="0 0 24 24"
           >
-           <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
           </svg>
         ),
-        type: "sub",
-        selected: false,
-        active: false,
         path: `${process.env.PUBLIC_URL}/app/PaymentManagment`,
         type: "link",
         active: false,
         selected: false,
-        title: "Payment Management",
       },
 
-    
-
-
       {
-        title: "Management",
+        title: <span style={{ color: "#082038" }}>Rate Management</span>,
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -131,21 +124,19 @@ export const MENUITEMS = [
             height="24"
             viewBox="0 0 24 24"
           >
-           <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
           </svg>
         ),
-        type: "sub",
-        selected: false,
-        active: false,
-        path: `${process.env.PUBLIC_URL}/app/InvesmentMangement`,
+        path: `${process.env.PUBLIC_URL}/app/RateMangement`,
         type: "link",
         active: false,
         selected: false,
-        title: "Rate Management  ",
       },
-
       {
-        title: "Management",
+        title: <span style={{ color: "#082038" }}>Allotment Management</span>,
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -154,18 +145,153 @@ export const MENUITEMS = [
             height="24"
             viewBox="0 0 24 24"
           >
-            <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
           </svg>
         ),
-        type: "sub",
-        selected: false,
-        active: false,
-        path: `${process.env.PUBLIC_URL}/app/CatogeryExpensive`,
+        path: `${process.env.PUBLIC_URL}/app/AllotmentManagement`,
         type: "link",
         active: false,
         selected: false,
-        title: "Allotment Management",
       },
+       {
+        title: <span style={{ color: "#082038" }}>Contact Management</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/ContactManagement`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/UserMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "User Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/CatalogManagment`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Catalog Management ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/PaymentManagment`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Payment Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/RateMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Rate Management  ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //      <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/AllotmentManagement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Allotment Management",
+      // },
 
       // {
       //   title: "Management",
