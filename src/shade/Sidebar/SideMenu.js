@@ -46,7 +46,7 @@ export const MENUITEMS = [
   },
 
   {
-    menutitle: "WEB APPS",
+    menutitle: "Customer Procurement",
     Items: [
       {
         title: <span style={{ color: "#082038" }}>User Management</span>,
@@ -69,29 +69,6 @@ export const MENUITEMS = [
         active: false,
         selected: false,
       },
-
-      {
-        title: <span style={{ color: "#082038" }}>Catalog Management</span>,
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="side-menu__icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
-              style={{ fill: "#082038" }}
-            />
-          </svg>
-        ),
-        path: `${process.env.PUBLIC_URL}/app/CatalogManagment`,
-        type: "link",
-        active: false,
-        selected: false,
-      },
-
       {
         title: <span style={{ color: "#082038" }}>Payment Management</span>,
         icon: (
@@ -115,27 +92,6 @@ export const MENUITEMS = [
       },
 
       {
-        title: <span style={{ color: "#082038" }}>Rate Management</span>,
-        icon: (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="side-menu__icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
-              style={{ fill: "#082038" }}
-            />
-          </svg>
-        ),
-        path: `${process.env.PUBLIC_URL}/app/RateMangement`,
-        type: "link",
-        active: false,
-        selected: false,
-      },
-      {
         title: <span style={{ color: "#082038" }}>Allotment Management</span>,
         icon: (
           <svg
@@ -156,7 +112,1132 @@ export const MENUITEMS = [
         active: false,
         selected: false,
       },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/UserMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "User Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/CatalogManagment`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Catalog Management ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/PaymentManagment`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Payment Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/RateMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Rate Management  ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //      <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/AllotmentManagement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Allotment Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/ExpensiveManagement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Profession Managment   ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/PaymentManagemnt`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: " TermsANDCondition Managment    ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/ProfitManagement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: " Blogs Managment ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/Agentcollection`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Agent Collection ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/ReportMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Report Managment  ",
+      // },
+
+      // {
+      //   title: "Elements",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected:false,
+      //   active:false,
+      //   children: [
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/alerts`,
+      //       title: "Alerts",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/avatar`,
+      //       title: "Avatar",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/breadcrumbs`,
+      //       title: "Breadcrumbs",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/buttons`,
+      //       title: "Buttons",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/badges`,
+      //       title: "Badges",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/dropdown`,
+      //       title: "Dropdown",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/thumbnails`,
+      //       title: "Thumbnails",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/listgroup`,
+      //       title: "List Group",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/navigation`,
+      //       title: "Navigation",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/images`,
+      //       title: "Images",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/pagination`,
+      //       title: "Pagination",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/popover`,
+      //       title: "Popover",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/progress`,
+      //       title: "Progress",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/spinners`,
+      //       title: "Spinners",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/mediaObject`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Media Object",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/typography`,
+      //       title: "Typography",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/tooltip`,
+      //       title: "Tooltip",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/toast`,
+      //       title: "Toast",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/tags`,
+      //       title: "Tags",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/tabs`,
+      //       title: "Tabs",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "Advanced UI",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20.995 6.9a.998.998 0 0 0-.548-.795l-8-4a1 1 0 0 0-.895 0l-8 4a1.002 1.002 0 0 0-.547.795c-.011.107-.961 10.767 8.589 15.014a.987.987 0 0 0 .812 0c9.55-4.247 8.6-14.906 8.589-15.014zM12 19.897C5.231 16.625 4.911 9.642 4.966 7.635L12 4.118l7.029 3.515c.037 1.989-.328 9.018-7.029 12.264z" />
+      //       <path d="m11 12.586-2.293-2.293-1.414 1.414L11 15.414l5.707-5.707-1.414-1.414z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected:false,
+      //   bookmark: true,
+      //   active:false,
+      //   children: [
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/accordions`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Accordions",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/carousel`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Carousel",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/collapse`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Collapse",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/modal`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Modal",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/timeline`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Timeline",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/sweetalert`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Sweet Alert",
+      //     },
+
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/rating`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Rating",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/counters`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Counters",
+      //     },
+
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/search`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Search",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/userlist`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Userlist",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/blog`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Blog",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/blogdetails`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Blog-details",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/editPost`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Edit-post",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/fileattachments`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "File Attachments",
+      //     },
+      //   ],
+      // },
+    ],
+  },
+
+  {
+    menutitle: "Catalog Procurement",
+    Items: [
+      {
+        title: <span style={{ color: "#082038" }}>Catalog Management</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/CatalogManagment`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+
+      {
+        title: <span style={{ color: "#082038" }}>Catalog Payment</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/GetCatalogPayment`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+
+
        {
+        title: <span style={{ color: "#082038" }}>Catalog Allotment</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/CatalogAlloment`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/UserMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "User Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/CatalogManagment`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Catalog Management ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/PaymentManagment`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Payment Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/RateMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Rate Management  ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //      <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/AllotmentManagement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Allotment Management",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/ExpensiveManagement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Profession Managment   ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/PaymentManagemnt`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: " TermsANDCondition Managment    ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/ProfitManagement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: " Blogs Managment ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/Agentcollection`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Agent Collection ",
+      // },
+
+      // {
+      //   title: "Management",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected: false,
+      //   active: false,
+      //   path: `${process.env.PUBLIC_URL}/app/ReportMangement`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      //   title: "Report Managment  ",
+      // },
+
+      // {
+      //   title: "Elements",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20 17V7c0-2.168-3.663-4-8-4S4 4.832 4 7v10c0 2.168 3.663 4 8 4s8-1.832 8-4zM12 5c3.691 0 5.931 1.507 6 1.994C17.931 7.493 15.691 9 12 9S6.069 7.493 6 7.006C6.069 6.507 8.309 5 12 5zM6 9.607C7.479 10.454 9.637 11 12 11s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2V9.607zM6 17v-2.393C7.479 15.454 9.637 16 12 16s4.521-.546 6-1.393v2.387c-.069.499-2.309 2.006-6 2.006s-5.931-1.507-6-2z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected:false,
+      //   active:false,
+      //   children: [
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/alerts`,
+      //       title: "Alerts",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/avatar`,
+      //       title: "Avatar",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/breadcrumbs`,
+      //       title: "Breadcrumbs",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/buttons`,
+      //       title: "Buttons",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/badges`,
+      //       title: "Badges",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/dropdown`,
+      //       title: "Dropdown",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/thumbnails`,
+      //       title: "Thumbnails",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/listgroup`,
+      //       title: "List Group",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/navigation`,
+      //       title: "Navigation",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/images`,
+      //       title: "Images",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/pagination`,
+      //       title: "Pagination",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/popover`,
+      //       title: "Popover",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/progress`,
+      //       title: "Progress",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/spinners`,
+      //       title: "Spinners",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/mediaObject`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Media Object",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/typography`,
+      //       title: "Typography",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/tooltip`,
+      //       title: "Tooltip",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/toast`,
+      //       title: "Toast",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/tags`,
+      //       title: "Tags",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/elements/tabs`,
+      //       title: "Tabs",
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "Advanced UI",
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path d="M20.995 6.9a.998.998 0 0 0-.548-.795l-8-4a1 1 0 0 0-.895 0l-8 4a1.002 1.002 0 0 0-.547.795c-.011.107-.961 10.767 8.589 15.014a.987.987 0 0 0 .812 0c9.55-4.247 8.6-14.906 8.589-15.014zM12 19.897C5.231 16.625 4.911 9.642 4.966 7.635L12 4.118l7.029 3.515c.037 1.989-.328 9.018-7.029 12.264z" />
+      //       <path d="m11 12.586-2.293-2.293-1.414 1.414L11 15.414l5.707-5.707-1.414-1.414z" />
+      //     </svg>
+      //   ),
+      //   type: "sub",
+      //   selected:false,
+      //   bookmark: true,
+      //   active:false,
+      //   children: [
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/accordions`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Accordions",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/carousel`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Carousel",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/collapse`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Collapse",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/modal`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Modal",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/timeline`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Timeline",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/sweetalert`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Sweet Alert",
+      //     },
+
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/rating`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Rating",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/counters`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Counters",
+      //     },
+
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/search`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Search",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/userlist`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Userlist",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/blog`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Blog",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/blogdetails`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Blog-details",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/editPost`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "Edit-post",
+      //     },
+      //     {
+      //       path: `${process.env.PUBLIC_URL}/advancedui/fileattachments`,
+      //       type: "link",
+      //       active:false,
+      //       selected:false,
+      //       title: "File Attachments",
+      //     },
+      //   ],
+      // },
+    ],
+  },
+
+  {
+    menutitle: "Content Management",
+    Items: [
+      {
+        title: <span style={{ color: "#082038" }}>Rate Management</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/RateMangement`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+
+      {
         title: <span style={{ color: "#082038" }}>Contact Management</span>,
         icon: (
           <svg

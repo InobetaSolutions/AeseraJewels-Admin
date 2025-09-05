@@ -661,7 +661,7 @@ export default function GetPayments() {
               className="card-title main-content-label"
               style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
             >
-              Payments
+              Payment Management
             </div>
           </div>
 

@@ -144,7 +144,7 @@ export default function GetUsers() {
               className="card-title main-content-label"
               style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
             >
-              User List
+              User Management
             </div>
           </div>
 

@@ -1,6 +1,5 @@
-// // Catalog.js
 // import React, { Fragment, useEffect, useState } from "react";
-// import { Card, Button } from "react-bootstrap";
+// import { Card, OverlayTrigger, Popover, Spinner, Alert } from "react-bootstrap";
 // import {
 //   useTable,
 //   useSortBy,
@@ -8,10 +7,12 @@
 //   usePagination,
 // } from "react-table";
 // import { useNavigate } from "react-router-dom";
-// import "./Catalog.css"; // <-- import CSS file for hover styles
+// import "./Catalog.css";
 
 // export default function Catalog() {
 //   const [data, setData] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
 //   const navigate = useNavigate();
 
 //   useEffect(() => {
@@ -36,10 +37,10 @@
 
 //         setData(
 //           products.map((product, index) => {
-//             // Remove unwanted keys
+//             // keep backend-only fields hidden from UI
 //             const { _id, __v, createdAt, updatedAt, ...rest } = product;
-
 //             return {
+//               _id, // ✅ keep id internally (needed for actions)
 //               serial: index + 1,
 //               ...rest,
 //               ...(createdAt
@@ -50,43 +51,123 @@
 //         );
 //       } catch (err) {
 //         console.error("JSON parse error:", err);
+//         setError("Invalid response format");
 //       }
 //     } catch (error) {
 //       console.error("Error fetching products:", error);
+//       setError("Failed to fetch products");
+//     } finally {
+//       setLoading(false);
 //     }
 //   };
 
-//   // Handle Add Product navigation
+//   // Navigate to Add Product page
 //   const handleAddProduct = () => {
 //     navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment/Addamc`);
+//   };
+
+//   // Navigate to View/Edit Product page
+//   const handleView = (product) => {
+//     let path = `${process.env.PUBLIC_URL}/app/ViewCatolog`;
+//     navigate(path, { state: { productdata: product } });
 //   };
 
 //   // Dynamic Columns
 //   const COLUMNS = React.useMemo(() => {
 //     if (data.length === 0) return [];
 
-//     return Object.keys(data[0]).map((key) => {
-//       if (key === "image") {
+//     const cols = Object.keys(data[0])
+//       .filter(
+//         (key) =>
+//           key !== "_id" &&
+//           key !== "__v" &&
+//           key !== "createdAt" &&
+//           key !== "updatedAt"
+//       )
+//       .map((key) => {
+//         if (key === "image") {
+//           return {
+//             Header: "Image",
+//             accessor: key,
+//             className: "wd-15p borderrigth",
+//             Cell: ({ value }) =>
+//               value ? (
+//                 <OverlayTrigger
+//                   placement="right"
+//                   delay={{ show: 200, hide: 100 }}
+//                   overlay={
+//                     <Popover>
+//                       <Popover.Body className="p-1">
+//                         <img
+//                           src={`http://13.204.96.244:3000/api/uploads/${value}`}
+//                           alt="product-large"
+//                           style={{
+//                             width: "200px",
+//                             height: "auto",
+//                             objectFit: "contain",
+//                             borderRadius: "6px",
+//                           }}
+//                         />
+//                       </Popover.Body>
+//                     </Popover>
+//                   }
+//                 >
+//                   <img
+//                     src={`http://13.204.96.244:3000/api/uploads/${value}`}
+//                     alt="product"
+//                     className="product-img-hover"
+//                     style={{
+//                       width: "80px",
+//                       height: "50px",
+//                       objectFit: "cover",
+//                       cursor: "pointer",
+//                       borderRadius: "4px",
+//                     }}
+//                   />
+//                 </OverlayTrigger>
+//               ) : (
+//                 "—"
+//               ),
+//           };
+//         }
 //         return {
-//           Header: "Image",
+//           Header:
+//             key === "serial"
+//               ? "S.No"
+//               : key.charAt(0).toUpperCase() + key.slice(1),
 //           accessor: key,
-//           Cell: ({ value }) => (
-//             <img
-//               src={`http://13.204.96.244:3000/api/uploads/${value}`}
-//               alt="product"
-//               className="product-img-hover"
-//             />
-//           ),
+//           className: "wd-20p borderrigth",
+//           Cell: ({ value }) =>
+//             value !== null && value !== undefined ? value.toString() : "—",
 //         };
-//       }
-//       return {
-//         Header: key === "serial" ? "S.No" : key.charAt(0).toUpperCase() + key.slice(1),
-//         accessor: key,
-//         className: "wd-20p borderrigth",
-//         Cell: ({ value }) =>
-//           value !== null && value !== undefined ? value.toString() : "—",
-//       };
+//       });
+
+//     // ✅ Add Actions column
+//     cols.push({
+//       Header: "Actions",
+//       accessor: "actions",
+//       className: "wd-10p borderrigth",
+//       Cell: ({ row }) => (
+//         <div className="d-flex">
+//           <button
+//             onClick={() => handleView(row.original)}
+//             className="me-2"
+//             style={{
+//               backgroundColor: "#082038",
+//               border: "1px solid #082038",
+//               color: "#fff",
+//               padding: "0.375rem 0.75rem",
+//               borderRadius: "0.25rem",
+//               cursor: "pointer",
+//             }}
+//           >
+//             View
+//           </button>
+//         </div>
+//       ),
 //     });
+
+//     return cols;
 //   }, [data]);
 
 //   const tableInstance = useTable(
@@ -103,17 +184,21 @@
 //     prepareRow,
 //     state,
 //     page,
-//     pageOptions,
 //     nextPage,
 //     previousPage,
 //     canNextPage,
 //     canPreviousPage,
+//     pageOptions,
 //     gotoPage,
 //     pageCount,
 //     setPageSize,
+//     setGlobalFilter,
 //   } = tableInstance;
 
-//   const { pageIndex, pageSize } = state;
+//   const { globalFilter, pageIndex, pageSize } = state;
+
+//   if (loading) return <Spinner animation="border" className="m-4" />;
+//   if (error) return <Alert variant="danger">{error}</Alert>;
 
 //   return (
 //     <Fragment>
@@ -122,21 +207,28 @@
 //           {/* Title + Add Product */}
 //           <div className="d-flex justify-content-between align-items-center mb-4">
 //             <div
-//               className="card-title main-content-label text-primary"
-//               style={{ fontSize: "1.25rem", paddingLeft: 10 }}
+//               className="card-title main-content-label"
+//               style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
 //             >
-//               Products
+//               Catalog Management
 //             </div>
-//             <Button
-//               variant="primary"
+//             <button
 //               onClick={handleAddProduct}
 //               className="me-2"
+//               style={{
+//                 backgroundColor: "#082038",
+//                 border: "1px solid #082038",
+//                 color: "#fff",
+//                 padding: "0.375rem 0.75rem",
+//                 borderRadius: "0.25rem",
+//                 cursor: "pointer",
+//               }}
 //             >
 //               Add Product
-//             </Button>
+//             </button>
 //           </div>
 
-//           {/* Page Size Selector */}
+//           {/* Filters */}
 //           <div className="d-flex">
 //             <select
 //               className="mb-4 selectpage border me-1"
@@ -149,6 +241,7 @@
 //                 </option>
 //               ))}
 //             </select>
+//             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 //           </div>
 
 //           {/* Table */}
@@ -160,7 +253,9 @@
 //                     {headerGroup.headers.map((column) => (
 //                       <th
 //                         className={column.className}
-//                         {...column.getHeaderProps(column.getSortByToggleProps())}
+//                         {...column.getHeaderProps(
+//                           column.getSortByToggleProps()
+//                         )}
 //                       >
 //                         {column.render("Header")}
 //                       </th>
@@ -194,38 +289,34 @@
 //               </strong>
 //             </span>
 //             <span className="ms-sm-auto">
-//               <Button
-//                 variant=""
+//               <button
 //                 className="btn-default tablebutton me-2 d-sm-inline d-block my-1"
 //                 onClick={() => gotoPage(0)}
 //                 disabled={!canPreviousPage}
 //               >
 //                 {" Previous "}
-//               </Button>
-//               <Button
-//                 variant=""
+//               </button>
+//               <button
 //                 className="btn-default tablebutton me-2 my-1"
 //                 onClick={() => previousPage()}
 //                 disabled={!canPreviousPage}
 //               >
 //                 {" << "}
-//               </Button>
-//               <Button
-//                 variant=""
+//               </button>
+//               <button
 //                 className="btn-default tablebutton me-2 my-1"
 //                 onClick={() => nextPage()}
 //                 disabled={!canNextPage}
 //               >
 //                 {" >> "}
-//               </Button>
-//               <Button
-//                 variant=""
+//               </button>
+//               <button
 //                 className="btn-default tablebutton me-2 d-sm-inline d-block my-1"
 //                 onClick={() => gotoPage(pageCount - 1)}
 //                 disabled={!canNextPage}
 //               >
 //                 {" Next "}
-//               </Button>
+//               </button>
 //             </span>
 //           </div>
 //         </Card.Body>
@@ -234,8 +325,25 @@
 //   );
 // }
 
+// // ✅ Search Component
+// const GlobalFilter = ({ filter, setFilter }) => {
+//   return (
+//     <span className="d-flex ms-auto">
+//       <input
+//         value={filter || ""}
+//         onChange={(e) => setFilter(e.target.value)}
+//         className="form-control mb-4"
+//         placeholder="Search..."
+//       />
+//     </span>
+//   );
+// };
+
+
+
+
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, Button, OverlayTrigger, Popover } from "react-bootstrap"; // ✅ added OverlayTrigger & Popover
+import { Card, OverlayTrigger, Popover, Spinner, Alert } from "react-bootstrap";
 import {
   useTable,
   useSortBy,
@@ -243,10 +351,12 @@ import {
   usePagination,
 } from "react-table";
 import { useNavigate } from "react-router-dom";
-import "./Catalog.css"; // <-- import CSS file for hover styles
+import "./Catalog.css";
 
 export default function Catalog() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -254,12 +364,15 @@ export default function Catalog() {
   }, []);
 
   const fetchProducts = async () => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
     try {
       const response = await fetch(
         "http://13.204.96.244:3000/api/get-products",
-        {
-          method: "GET",
-        }
+        requestOptions
       );
 
       const text = await response.text();
@@ -271,10 +384,10 @@ export default function Catalog() {
 
         setData(
           products.map((product, index) => {
-            // Remove unwanted keys
+            // keep backend-only fields hidden from UI
             const { _id, __v, createdAt, updatedAt, ...rest } = product;
-
             return {
+              _id, // ✅ keep id internally (needed for actions)
               serial: index + 1,
               ...rest,
               ...(createdAt
@@ -285,74 +398,123 @@ export default function Catalog() {
         );
       } catch (err) {
         console.error("JSON parse error:", err);
+        setError("Invalid response format");
       }
     } catch (error) {
       console.error("Error fetching products:", error);
+      setError("Failed to fetch products");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Handle Add Product navigation
+  // Navigate to Add Product page
   const handleAddProduct = () => {
     navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment/Addamc`);
+  };
+
+  // Navigate to View/Edit Product page
+  const handleView = (product) => {
+    let path = `${process.env.PUBLIC_URL}/app/ViewCatolog`;
+    navigate(path, { state: { productdata: product } });
   };
 
   // Dynamic Columns
   const COLUMNS = React.useMemo(() => {
     if (data.length === 0) return [];
 
-    return Object.keys(data[0]).map((key) => {
-      if (key === "image") {
+    const cols = Object.keys(data[0])
+      .filter(
+        (key) =>
+          key !== "_id" &&
+          key !== "__v" &&
+          key !== "createdAt" &&
+          key !== "updatedAt"
+      )
+      .map((key) => {
+        if (key === "image") {
+          return {
+            Header: "Image",
+            accessor: key,
+            className: "wd-15p borderrigth",
+            Cell: ({ value }) =>
+              value ? (
+                <OverlayTrigger
+                  placement="right"
+                  delay={{ show: 200, hide: 100 }}
+                  overlay={
+                    <Popover>
+                      <Popover.Body className="p-1">
+                        <img
+                          src={`http://13.204.96.244:3000/api/uploads/${value}`}
+                          alt="product-large"
+                          style={{
+                            width: "200px",
+                            height: "auto",
+                            objectFit: "contain",
+                            borderRadius: "6px",
+                          }}
+                        />
+                      </Popover.Body>
+                    </Popover>
+                  }
+                >
+                  <img
+                    src={`http://13.204.96.244:3000/api/uploads/${value}`}
+                    alt="product"
+                    className="product-img-hover"
+                    style={{
+                      width: "80px",
+                      height: "50px",
+                      objectFit: "cover",
+                      cursor: "pointer",
+                      borderRadius: "4px",
+                    }}
+                  />
+                </OverlayTrigger>
+              ) : (
+                "—"
+              ),
+          };
+        }
         return {
-          Header: "Image",
+          Header:
+            key === "serial"
+              ? "S.No"
+              : key.charAt(0).toUpperCase() + key.slice(1),
           accessor: key,
-          Cell: ({ value }) => (
-            <OverlayTrigger
-              placement="right"
-              delay={{ show: 200, hide: 100 }}
-              overlay={
-                <Popover>
-                  <Popover.Body className="p-1">
-                    <img
-                      src={`http://13.204.96.244:3000/api/uploads/${value}`}
-                      alt="product-large"
-                      style={{
-                        width: "200px",
-                        height: "auto",
-                        objectFit: "contain",
-                        borderRadius: "6px",
-                      }}
-                    />
-                  </Popover.Body>
-                </Popover>
-              }
-            >
-              <img
-                src={`http://13.204.96.244:3000/api/uploads/${value}`}
-                alt="product"
-                className="product-img-hover"
-                style={{
-                  width: "80px",
-                  height: "50px",
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  borderRadius: "4px",
-                }}
-              />
-            </OverlayTrigger>
-          ),
+          className: "wd-20p borderrigth",
+          Cell: ({ value }) =>
+            value !== null && value !== undefined ? value.toString() : "—",
         };
-      }
-      return {
-        Header:
-          key === "serial"
-            ? "S.No"
-            : key.charAt(0).toUpperCase() + key.slice(1),
-        accessor: key,
-        className: "wd-20p borderrigth",
-        Cell: ({ value }) =>
-          value !== null && value !== undefined ? value.toString() : "—",
-      };
+      });
+
+    // ✅ Add Actions column
+    cols.push({
+      Header: "Actions",
+      accessor: "actions",
+      className: "wd-10p borderrigth",
+      Cell: ({ row }) => (
+        <div className="d-flex">
+          <button
+            onClick={() => handleView(row.original)}
+            className="me-2"
+            style={{
+              backgroundColor: "#082038",
+              border: "1px solid #082038",
+              color: "#fff",
+              padding: "0.375rem 0.75rem",
+              borderRadius: "0.25rem",
+              cursor: "pointer",
+            }}
+          >
+            View
+          </button>
+        </div>
+      ),
     });
+
+    return cols;
   }, [data]);
 
   const tableInstance = useTable(
@@ -369,17 +531,21 @@ export default function Catalog() {
     prepareRow,
     state,
     page,
-    pageOptions,
     nextPage,
     previousPage,
     canNextPage,
     canPreviousPage,
+    pageOptions,
     gotoPage,
     pageCount,
     setPageSize,
+    setGlobalFilter,
   } = tableInstance;
 
-  const { pageIndex, pageSize } = state;
+  const { globalFilter, pageIndex, pageSize } = state;
+
+  if (loading) return <Spinner animation="border" className="m-4" />;
+  if (error) return <Alert variant="danger">{error}</Alert>;
 
   return (
     <Fragment>
@@ -391,7 +557,7 @@ export default function Catalog() {
               className="card-title main-content-label"
               style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
             >
-              Products
+              Catalog Management
             </div>
             <button
               onClick={handleAddProduct}
@@ -409,23 +575,7 @@ export default function Catalog() {
             </button>
           </div>
 
-          {/* <div className="d-flex justify-content-between align-items-center mb-4">
-            <div
-              className="card-title main-content-label text-primary"
-              style={{ fontSize: "1.25rem", paddingLeft: 10 ,}}
-            >
-              Products
-            </div>
-            <Button
-              variant="primary"
-              onClick={handleAddProduct}
-              className="me-2"
-            >
-              Add Product
-            </Button>
-          </div> */}
-
-          {/* Page Size Selector */}
+          {/* Filters */}
           <div className="d-flex">
             <select
               className="mb-4 selectpage border me-1"
@@ -438,6 +588,7 @@ export default function Catalog() {
                 </option>
               ))}
             </select>
+            <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
           </div>
 
           {/* Table */}
@@ -485,38 +636,34 @@ export default function Catalog() {
               </strong>
             </span>
             <span className="ms-sm-auto">
-              <Button
-                variant=""
+              <button
                 className="btn-default tablebutton me-2 d-sm-inline d-block my-1"
                 onClick={() => gotoPage(0)}
                 disabled={!canPreviousPage}
               >
                 {" Previous "}
-              </Button>
-              <Button
-                variant=""
+              </button>
+              <button
                 className="btn-default tablebutton me-2 my-1"
                 onClick={() => previousPage()}
                 disabled={!canPreviousPage}
               >
                 {" << "}
-              </Button>
-              <Button
-                variant=""
+              </button>
+              <button
                 className="btn-default tablebutton me-2 my-1"
                 onClick={() => nextPage()}
                 disabled={!canNextPage}
               >
                 {" >> "}
-              </Button>
-              <Button
-                variant=""
+              </button>
+              <button
                 className="btn-default tablebutton me-2 d-sm-inline d-block my-1"
                 onClick={() => gotoPage(pageCount - 1)}
                 disabled={!canNextPage}
               >
                 {" Next "}
-              </Button>
+              </button>
             </span>
           </div>
         </Card.Body>
@@ -524,3 +671,18 @@ export default function Catalog() {
     </Fragment>
   );
 }
+
+// ✅ Search Component
+const GlobalFilter = ({ filter, setFilter }) => {
+  return (
+    <span className="d-flex ms-auto">
+      <input
+        value={filter || ""}
+        onChange={(e) => setFilter(e.target.value)}
+        className="form-control mb-4"
+        placeholder="Search..."
+      />
+    </span>
+  );
+};
+
