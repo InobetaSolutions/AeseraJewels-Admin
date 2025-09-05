@@ -339,6 +339,18 @@ const ExpensiveManagement = React.lazy(() =>
 const CatalogManagment = React.lazy(() =>
   import("./components/App/AllFiles/CatalogManagment/Catalog.js")
 );
+
+const GetCatalogPayment = React.lazy(() =>
+  import("./components/App/AllFiles/GetCatalogPayment/GetCatalogPayment.js")
+);
+
+const CatalogAlloment = React.lazy(() =>
+  import("./components/App/AllFiles/CatalogAlloment/CatalogAlloment.js")
+);
+
+const ViewCatolog = React.lazy(() =>
+  import("./components/App/AllFiles/CatalogManagment/ViewCatolog.js")
+);
 const PaymentManagemnt = React.lazy(() =>
   import("./components/App/AllFiles/Payment Managment/Payment")
 );
@@ -511,6 +523,20 @@ root.render(
               <Route
                 path={`${process.env.PUBLIC_URL}/app/CatalogManagment`}
                 element={<CatalogManagment />}
+              />
+               <Route
+                path={`${process.env.PUBLIC_URL}/app/GetCatalogPayment`}
+                element={<GetCatalogPayment />}
+              />
+
+               <Route
+                path={`${process.env.PUBLIC_URL}/app/CatalogAlloment`}
+                element={<CatalogAlloment />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/ViewCatolog`}
+                element={<ViewCatolog />}
               />
 
                <Route

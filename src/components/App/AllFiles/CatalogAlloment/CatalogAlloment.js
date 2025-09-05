@@ -1,51 +1,127 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
-import { useTable, useSortBy, useGlobalFilter, usePagination } from "react-table";
+import { Button, Card, Spinner, Badge } from "react-bootstrap";
+import Swal from "sweetalert2";
+import {
+  useTable,
+  useSortBy,
+  useGlobalFilter,
+  usePagination,
+} from "react-table";
 
-export default function GetCurrentRate() {
+export default function GetGoldRecords() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchRates();
-  }, []);
-
-  const fetchRates = async () => {
-    try {
-      const response = await fetch("http://13.204.96.244:3000/api/getAllCurrentRate", {
-        method: "GET",
-        redirect: "follow",
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const result = await response.json(); // API already returns JSON
-      console.log("API Data:", result);
-
-      const rates = Array.isArray(result) ? result : [result];
-
-      setData(
-        rates.map((rate, index) => ({
-          serial: index + 1,
-          GramPrice: rate.price_gram_24k ?? "—", // ✅ fixed key
-          Timestamp: rate.istDate ?? "—",        // ✅ fixed key
-        }))
-      );
-    } catch (error) {
-      console.error("Error fetching rates:", error);
-    }
-  };
-
-  // ✅ Static Columns
+  // ✅ Table columns (S.No added)
   const COLUMNS = React.useMemo(
     () => [
-      { Header: "S.No", accessor: "serial", className: "wd-20p borderrigth" },
-      { Header: "Gram Price", accessor: "GramPrice", className: "wd-20p borderrigth" },
-      { Header: "Timestamp", accessor: "Timestamp", className: "wd-20p borderrigth" },
+      {
+        Header: "S.No",
+        accessor: "serial",
+        Cell: ({ row }) => row.index + 1,
+        className: "wd-10p borderrigth",
+      },
+      {
+        Header: "Mobile",
+        accessor: "mobileNumber",
+        className: "wd-20p borderrigth",
+      },
+      {
+        Header: "Name",
+        accessor: "name",
+        className: "wd-20p borderrigth",
+      },
+      {
+        Header: "Grams",
+        accessor: "grams",
+        Cell: ({ value }) => `${value || 0} g`,
+        className: "wd-15p borderrigth",
+      },
+      {
+        Header: "Status",
+        accessor: "allotmentStatus",
+        Cell: ({ value }) => (
+          <Badge
+            bg={
+              value === "Approved"
+                ? "success"
+                : value === "Rejected"
+                ? "danger"
+                : "warning"
+            }
+          >
+            {value || "Pending"}
+          </Badge>
+        ),
+        className: "wd-15p borderrigth",
+      },
+      {
+        Header: "Action",
+        accessor: "actions",
+        Cell: ({ row }) => (
+          <div className="d-flex gap-2">
+            <Button
+              variant="success"
+              size="sm"
+              onClick={() => handleApprove(row.original)}
+            >
+              Approve
+            </Button>
+            <Button
+              variant="danger"
+              size="sm"
+              onClick={() => handleReject(row.original)}
+            >
+              Reject
+            </Button>
+          </div>
+        ),
+        className: "wd-20p borderrigth",
+      },
     ],
     []
   );
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // ✅ Fetch API
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://13.204.96.244:3000/api/getGoldRecords");
+      const result = await response.json();
+
+      if (Array.isArray(result)) {
+        setData(
+          result.map((item, index) => ({
+            serial: index + 1,
+            mobileNumber: item.mobileNumber || "N/A",
+            name: item.name || "N/A",
+            grams: item.grams || 0,
+            allotmentStatus: item.allotmentStatus || "Pending",
+          }))
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching gold records:", error);
+      Swal.fire("Error!", "Failed to fetch records", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ✅ Action handlers
+  const handleApprove = (row) => {
+    Swal.fire("Approved!", `Record for ${row.mobileNumber} approved.`, "success");
+    // TODO: Call API for approval here
+  };
+
+  const handleReject = (row) => {
+    Swal.fire("Rejected!", `Record for ${row.mobileNumber} rejected.`, "error");
+    // TODO: Call API for rejection here
+  };
 
   const tableInstance = useTable(
     { columns: COLUMNS, data },
@@ -73,16 +149,27 @@ export default function GetCurrentRate() {
 
   const { pageIndex, pageSize } = state;
 
+  if (loading) {
+    return (
+      <Card>
+        <Card.Body className="text-center">
+          <Spinner animation="border" variant="primary" />
+          <div className="mt-2">Loading records...</div>
+        </Card.Body>
+      </Card>
+    );
+  }
+
   return (
     <Fragment>
       <Card>
         <Card.Body>
           <div className="d-flex justify-content-between align-items-center mb-4">
-             <div
+            <div
               className="card-title main-content-label"
               style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
             >
-              Rate Management
+              Gold Records
             </div>
           </div>
 

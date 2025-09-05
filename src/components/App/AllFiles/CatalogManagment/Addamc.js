@@ -9,6 +9,7 @@ export default function Addamc() {
     description: "",
     goldtype: "",
     price: "",
+    grams:"",
   });
   const [file, setFile] = useState(null);
 
@@ -33,6 +34,7 @@ export default function Addamc() {
     fd.append("description", formData.description);
     fd.append("goldtype", formData.goldtype);
     fd.append("price", formData.price);
+     fd.append("grams", formData.grams);
 
     try {
       const response = await fetch(
@@ -111,6 +113,17 @@ export default function Addamc() {
               type="text"
               name="description"
               value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>grams</Form.Label>
+            <Form.Control
+              type="text"
+              name="grams"
+              value={formData.grams}
               onChange={handleChange}
               required
             />

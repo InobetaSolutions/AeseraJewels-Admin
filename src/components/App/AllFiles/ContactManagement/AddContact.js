@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export default function Addamc() {
+export default function AddContact() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    tagid: "",
-    description: "",
-    goldtype: "",
-    price: "",
+    email: "",
+    mobile: "",
   });
-  const [file, setFile] = useState(null);
 
-  // Handle text input changes
+  // Handle input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -24,33 +21,24 @@ export default function Addamc() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const fd = new FormData();
-    if (file) {
-      // ✅ only file + name (no C:/ path!)
-      fd.append("image", file, file.name);
-    }
-    fd.append("tagid", formData.tagid);
-    fd.append("description", formData.description);
-    fd.append("goldtype", formData.goldtype);
-    fd.append("price", formData.price);
-
     try {
       const response = await fetch(
-        "http://13.204.96.244:3000/api/create-products",
+        "http://13.204.96.244:3000/api/createSupport",
         {
           method: "POST",
-          body: fd,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         }
       );
 
-      const result = await response.json(); // ✅ parse JSON, not just text
-      console.log("Create Product Response:", result);
+      const result = await response.json();
+      console.log("Create Support Response:", result);
 
-      alert("Product added successfully!");
-      navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`);
+      alert("✅ Contact added successfully!");
+      navigate(`${process.env.PUBLIC_URL}/app/contacts`);
     } catch (err) {
       console.error("Error:", err);
-      alert("❌ Failed to add product");
+      alert("❌ Failed to add contact");
     }
   };
 
@@ -59,23 +47,13 @@ export default function Addamc() {
       <Card.Body>
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h5 style={{ color: "#082038" }}>Add Contact</h5>
-          {/* <h5 className="text-primary">Add Product</h5> */}
-          {/* <Button
-            variant="secondary"
-            onClick={() =>
-              navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`)
-            }
-          >
-            Back
-          </Button> */}
-            <button
+          <button
             style={{
               backgroundColor: "#082038",
               borderColor: "#082038",
               color: "#fff",
               boxShadow: "none",
             }}
-          
             onClick={() =>
               navigate(`${process.env.PUBLIC_URL}/app/CatalogManagment`)
             }
@@ -85,14 +63,12 @@ export default function Addamc() {
         </div>
 
         <Form onSubmit={handleSubmit}>
-          
-
           <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
             <Form.Control
-              type="text"
-              name="goldtype"
-              value={formData.goldtype}
+              type="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               required
             />
@@ -101,9 +77,9 @@ export default function Addamc() {
           <Form.Group className="mb-3">
             <Form.Label>Mobile Number</Form.Label>
             <Form.Control
-              type="number"
-              name="price"
-              value={formData.price}
+              type="text"
+              name="mobile"
+              value={formData.mobile}
               onChange={handleChange}
               required
             />
@@ -120,10 +96,6 @@ export default function Addamc() {
           >
             Add Contact
           </button>
-
-          {/* <Button type="submit" className="btn-primary">
-            Add Product
-          </Button> */}
         </Form>
       </Card.Body>
     </Card>
