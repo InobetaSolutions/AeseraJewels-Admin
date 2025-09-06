@@ -35,7 +35,7 @@ export default function AddContact() {
       console.log("Create Support Response:", result);
 
       alert("✅ Contact added successfully!");
-      navigate(`${process.env.PUBLIC_URL}/app/contacts`);
+      navigate(`${process.env.PUBLIC_URL}/app/Contact`);
     } catch (err) {
       console.error("Error:", err);
       alert("❌ Failed to add contact");
