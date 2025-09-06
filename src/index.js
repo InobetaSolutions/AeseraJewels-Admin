@@ -23,7 +23,7 @@ const Dashboard3 = React.lazy(() =>
 );
 //App
 const Cards = React.lazy(() => import("./components/App/Cards/Cards"));
-const Contacts = React.lazy(() => import("./components/App/Contacts/Contacts"));
+const Contact = React.lazy(() => import("./components/App/AllFiles/ContactManagement/Contact.js"));
 const Filedetails = React.lazy(() =>
   import("./components/App/File-details/Filedetails")
 );
@@ -544,8 +544,8 @@ root.render(
                 element={<Addamc />}
               />
               <Route
-                path={`${process.env.PUBLIC_URL}/app/contacts`}
-                element={<Contacts />}
+                path={`${process.env.PUBLIC_URL}/app/Contact`}
+                element={<Contact />}
               />
               <Route
                 path={`${process.env.PUBLIC_URL}/app/filedetails`}
