@@ -51,7 +51,11 @@ const SignIn = () => {
         <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
         <div></div> <div></div> <div></div>
       </div>
-      <div className="page bg-primary">
+      {/* <div className="page bg-primary"> */}
+      <div
+        className="page"
+        style={{ backgroundColor: "#082038", minHeight: "100vh" }}
+      >
         <div className="page-single">
           <div className="container" style={{ marginTop: "89px" }}>
             <Row>
@@ -111,14 +115,22 @@ const SignIn = () => {
                                       required
                                     />
                                   </Form.Group>
-                                  <Button
+                                  <button
                                     variant=""
                                     type="submit"
-                                    className="btn btn-primary btn-block"
+                                    className="btn  btn-block"
+                                    style={{
+                                      backgroundColor: "#082038",
+                                      border: "1px solid #082038",
+                                      color: "#fff",
+                                      padding: "0.375rem 0.75rem",
+                                      borderRadius: "0.25rem",
+                                      cursor: "pointer",
+                                    }}
                                     onClick={Login}
                                   >
                                     Sign In
-                                  </Button>
+                                  </button>
 
                                   <div className="main-signin-footer text-center mt-3">
                                     {/* Extra links can go here */}

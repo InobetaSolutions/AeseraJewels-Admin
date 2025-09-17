@@ -1495,19 +1495,40 @@ export default function GetFullPaymentSummary() {
   const [allotmentSuccess, setAllotmentSuccess] = useState({});
 
   // ✅ Utility: Format timestamps into IST
+  // const formatToIST = (timestamp) => {
+  //   if (!timestamp) return "N/A";
+  //   try {
+  //     const date = new Date(timestamp);
+  //     return new Intl.DateTimeFormat("en-IN", {
+  //       timeZone: "Asia/Kolkata",
+  //       dateStyle: "medium",
+  //       timeStyle: "short",
+  //     }).format(date);
+  //   } catch {
+  //     return timestamp;
+  //   }
+  // };
+
+
   const formatToIST = (timestamp) => {
-    if (!timestamp) return "N/A";
-    try {
-      const date = new Date(timestamp);
-      return new Intl.DateTimeFormat("en-IN", {
-        timeZone: "Asia/Kolkata",
-        dateStyle: "medium",
-        timeStyle: "short",
-      }).format(date);
-    } catch {
-      return timestamp;
-    }
-  };
+  if (!timestamp) return "N/A";
+  try {
+    const date = new Date(timestamp);
+    return new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Kolkata",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    }).format(date);
+  } catch {
+    return timestamp;
+  }
+};
+
 
   useEffect(() => {
     fetchSummary();
