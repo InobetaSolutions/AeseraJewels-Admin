@@ -344,6 +344,14 @@ const GetCatalogPayment = React.lazy(() =>
   import("./components/App/AllFiles/GetCatalogPayment/GetCatalogPayment.js")
 );
 
+const ApprovedCatalog = React.lazy(() =>
+  import("./components/App/AllFiles/GetCatalogPayment/ApprovedCatalog.js")
+);
+
+const Cancelcatalog = React.lazy(() =>
+  import("./components/App/AllFiles/GetCatalogPayment/Cancelcatalog.js")
+);
+
 const CatalogAlloment = React.lazy(() =>
   import("./components/App/AllFiles/CatalogAlloment/CatalogAlloment.js")
 );
@@ -353,6 +361,12 @@ const ViewCatolog = React.lazy(() =>
 );
 const PaymentManagemnt = React.lazy(() =>
   import("./components/App/AllFiles/Payment Managment/Payment")
+);
+const Approved = React.lazy(() =>
+  import("./components/App/AllFiles/PaymentManagment/Approved.js")
+);
+const Cancel = React.lazy(() =>
+  import("./components/App/AllFiles/PaymentManagment/Cancel.js")
 );
 const ReportMangement = React.lazy(() =>
   import("./components/App/AllFiles/Report Managment/Report")
@@ -365,6 +379,10 @@ const ContactManagement = React.lazy(() =>
 );
 const AddContact = React.lazy(() =>
   import("./components/App/AllFiles/ContactManagement/AddContact.js")
+);
+
+const UpdateContact = React.lazy(() =>
+  import("./components/App/AllFiles/ContactManagement/UpdateContact.js")
 );
 const ProfitManagement = React.lazy(() =>
   import("./components/App/AllFiles/ProfitManagement/Profit")
@@ -477,6 +495,11 @@ root.render(
               />
 
               <Route
+                path={`${process.env.PUBLIC_URL}/app/UpdateContact/:id`}
+                element={<UpdateContact />}
+              />
+
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/Addbanners`}
                 element={<Addbanners />}
               />
@@ -489,6 +512,16 @@ root.render(
               <Route
                 path={`${process.env.PUBLIC_URL}/app/PaymentManagemnt`}
                 element={<PaymentManagemnt />}
+              />
+
+               <Route
+                path={`${process.env.PUBLIC_URL}/app/Approved`}
+                element={<Approved />}
+              />
+
+               <Route
+                path={`${process.env.PUBLIC_URL}/app/Cancel`}
+                element={<Cancel />}
               />
 
               <Route
@@ -528,6 +561,18 @@ root.render(
                 path={`${process.env.PUBLIC_URL}/app/GetCatalogPayment`}
                 element={<GetCatalogPayment />}
               />
+
+               <Route
+                path={`${process.env.PUBLIC_URL}/app/ApprovedCatalog`}
+                element={<ApprovedCatalog />}
+              />
+
+                 <Route
+                path={`${process.env.PUBLIC_URL}/app/Cancelcatalog`}
+                element={<Cancelcatalog />}
+              />
+
+                
 
                <Route
                 path={`${process.env.PUBLIC_URL}/app/CatalogAlloment`}

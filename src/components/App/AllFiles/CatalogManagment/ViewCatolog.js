@@ -273,7 +273,7 @@ const EditIndustry = () => {
                   <Form.Label>grams</Form.Label>
                   <Form.Control
                     as="textarea"
-                    rows={6}
+                    rows={1}
                     name="grams"
                     value={formData.grams}
                     onChange={handleChange}
