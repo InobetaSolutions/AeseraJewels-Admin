@@ -122,7 +122,8 @@ export default function Header() {
           <div className="responsive-logo">
             <Link to={`${process.env.PUBLIC_URL}/dashboard/dashboard-1`} className="header-logo">
               <img
-                src={require("../../assets/img/brand/logo.png")}
+                // src={require("../../assets/img/brand/logo.png")}
+                src={require("../../assets/img/brand/logo5124.png")}
                 className="mobile-logo logo-1"
                 alt="logo"
               />

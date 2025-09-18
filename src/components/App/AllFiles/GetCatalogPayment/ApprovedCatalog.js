@@ -78,37 +78,37 @@ export default function GetApprovedCatalogPayments() {
         ),
         className: "wd-20p borderrigth",
       },
-      {
-        Header: "Allotment Status",
-        accessor: "allotmentStatus",
-        Cell: ({ value }) => (
-          <span
-            className={
-              value?.toLowerCase().includes("delivered")
-                ? "text-success fw-bold"
-                : "text-danger fw-bold"
-            }
-          >
-            {value}
-          </span>
-        ),
-        className: "wd-20p borderrigth",
-      },
-      {
-        Header: "Address",
-        accessor: "address",
-        className: "wd-20p borderrigth",
-      },
-      {
-        Header: "City",
-        accessor: "city",
-        className: "wd-15p borderrigth",
-      },
-      {
-        Header: "Post Code",
-        accessor: "postCode",
-        className: "wd-10p borderrigth",
-      },
+      // {
+      //   Header: "Allotment Status",
+      //   accessor: "allotmentStatus",
+      //   Cell: ({ value }) => (
+      //     <span
+      //       className={
+      //         value?.toLowerCase().includes("delivered")
+      //           ? "text-success fw-bold"
+      //           : "text-danger fw-bold"
+      //       }
+      //     >
+      //       {value}
+      //     </span>
+      //   ),
+      //   className: "wd-20p borderrigth",
+      // },
+      // {
+      //   Header: "Address",
+      //   accessor: "address",
+      //   className: "wd-20p borderrigth",
+      // },
+      // {
+      //   Header: "City",
+      //   accessor: "city",
+      //   className: "wd-15p borderrigth",
+      // },
+      // {
+      //   Header: "Post Code",
+      //   accessor: "postCode",
+      //   className: "wd-10p borderrigth",
+      // },
       {
         Header: "Timestamp",
         accessor: "timestamp",
