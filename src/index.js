@@ -384,6 +384,31 @@ const AddContact = React.lazy(() =>
 const UpdateContact = React.lazy(() =>
   import("./components/App/AllFiles/ContactManagement/UpdateContact.js")
 );
+
+const Delivery = React.lazy(() =>
+  import("./components/App/AllFiles/DeliveryManagement/Delivery")
+);
+
+const AddAmount = React.lazy(() =>
+  import("./components/App/AllFiles/DeliveryManagement/AddAmount")
+);
+
+const UpdateAmount = React.lazy(() =>
+  import("./components/App/AllFiles/DeliveryManagement/UpdateAmount")
+);
+
+const Tax = React.lazy(() =>
+  import("./components/App/AllFiles/TaxManagement/Tax")
+);
+
+const AddTax = React.lazy(() =>
+  import("./components/App/AllFiles/TaxManagement/AddTax")
+);
+
+const UpdateTax = React.lazy(() =>
+  import("./components/App/AllFiles/TaxManagement/UpdateTax")
+);
+
 const ProfitManagement = React.lazy(() =>
   import("./components/App/AllFiles/ProfitManagement/Profit")
 );
@@ -498,6 +523,36 @@ root.render(
                 path={`${process.env.PUBLIC_URL}/app/UpdateContact/:id`}
                 element={<UpdateContact />}
               />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/Delivery`}
+                element={<Delivery />}
+                />
+
+                <Route
+                path={`${process.env.PUBLIC_URL}/app/AddAmount`}
+                element={<AddAmount />}
+                />
+
+                <Route
+                path={`${process.env.PUBLIC_URL}/app/UpdateAmount/:id`}
+                element={<UpdateAmount />}
+                />  
+
+                <Route
+                path={`${process.env.PUBLIC_URL}/app/Tax`}
+                element={<Tax />}
+                />
+
+                <Route
+                path={`${process.env.PUBLIC_URL}/app/AddTax`}
+                element={<AddTax />}
+                />
+
+                <Route
+                path={`${process.env.PUBLIC_URL}/app/UpdateTax/:id`}
+                element={<UpdateTax />}
+                />
 
               <Route
                 path={`${process.env.PUBLIC_URL}/app/Addbanners`}
