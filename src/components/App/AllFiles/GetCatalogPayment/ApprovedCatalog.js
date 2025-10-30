@@ -58,6 +58,12 @@ export default function GetApprovedCatalogPayments() {
         className: "wd-15p borderrigth",
       },
       {
+        Header: "InvestAmount",
+        accessor: "investAmount",
+        Cell: ({ value }) => `₹ ${value.toLocaleString()}`,
+        className: "wd-15p borderrigth",
+      },
+      {
         Header: "Paid Grams",
         accessor: "Paidgrams",
         className: "wd-10p borderrigth",
