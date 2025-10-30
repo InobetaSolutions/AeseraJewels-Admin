@@ -1975,6 +1975,11 @@ export default function GetGoldRecords() {
         accessor: "Paidamount",
         Cell: ({ value }) => `₹ ${value?.toLocaleString("en-IN") || 0}`,
       },
+       {
+        Header: "InvestAmount",
+        accessor: "investAmount",
+        Cell: ({ value }) => `${value || 0} `,
+      },
       {
         Header: "Paid Grams",
         accessor: "Paidgrams",
@@ -2063,43 +2068,125 @@ export default function GetGoldRecords() {
   );
 
   // ✅ Fetch API
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        "http://13.204.96.244:3000/api/getCatalogPayment"
-      );
-      const result = await response.json();
+  // const fetchData = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await fetch(
+  //       "http://13.204.96.244:3000/api/getCatalogPayment"
+  //     );
+  //     const result = await response.json();
 
-      if (result.status && Array.isArray(result.data)) {
-        setData(
-          result.data.map((item, index) => ({
-            _id: item._id,
-            serial: index + 1,
-            mobileNumber: item.mobileNumber || "N/A",
-            tagid: item.tagid || "N/A",
-            goldType: item.goldType || "N/A",
-            description: item.description || "N/A",
-            amount: item.amount || 0,
-            grams: item.grams || 0,
-            Paidamount: item.Paidamount || 0,
-            Paidgrams: item.Paidgrams || 0,
-            allotmentStatus: item.allotmentStatus || "Pending",
-            paymentStatus: item.paymentStatus || "",
-            address: item.address || "N/A",
-            createdAt: item.createdAt || "N/A",
-            postCode: item.postCode || "N/A",
-          }))
-        );
-      } else {
-        Swal.fire("Error!", "Unexpected response format", "error");
-      }
-    } catch (error) {
-      Swal.fire("Error!", "Failed to fetch records", "error");
-    } finally {
-      setLoading(false);
+  //     if (result.status && Array.isArray(result.data)) {
+  //       setData(
+  //         result.data.map((item, index) => ({
+  //           _id: item._id,
+  //           serial: index + 1,
+  //           mobileNumber: item.mobileNumber || "N/A",
+  //           tagid: item.tagid || "N/A",
+  //           goldType: item.goldType || "N/A",
+  //           description: item.description || "N/A",
+  //           amount: item.amount || 0,
+  //           grams: item.grams || 0,
+  //           Paidamount: item.Paidamount || 0,
+  //           investAmount: item.investAmount || 0,
+  //           Paidgrams: item.Paidgrams || 0,
+  //           allotmentStatus: item.allotmentStatus || "Pending",
+  //           paymentStatus: item.paymentStatus || "",
+  //           address: item.address || "N/A",
+  //           createdAt: item.createdAt || "N/A",
+  //           postCode: item.postCode || "N/A",
+  //         }))
+  //       );
+  //     } else {
+  //       Swal.fire("Error!", "Unexpected response format", "error");
+  //     }
+  //   } catch (error) {
+  //     Swal.fire("Error!", "Failed to fetch records", "error");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  const fetchData = async () => {
+  setLoading(true);
+  try {
+    const response = await fetch(
+      "http://13.204.96.244:3000/api/getCatalogPayment"
+    );
+    const result = await response.json();
+    console.log("Fetched catalog payments:", result);
+
+    // 🟢 Check if the response is a valid array (like your fetchPayments)
+    if (Array.isArray(result)) {
+      // ✅ Sort newest first (based on createdAt)
+      const sorted = [...result].sort(
+        (a, b) =>
+          new Date(b.createdAt || 0).getTime() -
+          new Date(a.createdAt || 0).getTime()
+      );
+
+      setData(
+        sorted.map((item, index) => ({
+          serial: index + 1,
+          _id: item._id || index,
+          mobileNumber: item.mobileNumber || "N/A",
+          tagid: item.tagid || "N/A",
+          goldType: item.goldType || "N/A",
+          description: item.description || "N/A",
+          amount: item.amount || 0,
+          grams: item.grams || 0,
+          Paidamount: item.Paidamount || 0,
+          investAmount: item.investAmount || 0,
+          Paidgrams: item.Paidgrams || 0,
+          allotmentStatus: item.allotmentStatus || "Pending",
+          paymentStatus: item.paymentStatus || "",
+          address: item.address || "N/A",
+          createdAt: item.createdAt || "N/A",
+          postCode: item.postCode || "N/A",
+        }))
+      );
     }
-  };
+
+    // 🟡 OR — if your API returns `{ status, data }` instead of a raw array
+    else if (result.status && Array.isArray(result.data)) {
+      const sorted = [...result.data].sort(
+        (a, b) =>
+          new Date(b.createdAt || 0).getTime() -
+          new Date(a.createdAt || 0).getTime()
+      );
+
+      setData(
+        sorted.map((item, index) => ({
+          serial: index + 1,
+          _id: item._id || index,
+          mobileNumber: item.mobileNumber || "N/A",
+          tagid: item.tagid || "N/A",
+          goldType: item.goldType || "N/A",
+          description: item.description || "N/A",
+          amount: item.amount || 0,
+          grams: item.grams || 0,
+          Paidamount: item.Paidamount || 0,
+          investAmount: item.investAmount || 0,
+          Paidgrams: item.Paidgrams || 0,
+          allotmentStatus: item.allotmentStatus || "Pending",
+          paymentStatus: item.paymentStatus || "",
+          address: item.address || "N/A",
+          createdAt: item.createdAt || "N/A",
+          postCode: item.postCode || "N/A",
+        }))
+      );
+    } else {
+      Swal.fire("Error!", "Unexpected response format", "error");
+    }
+  } catch (error) {
+    console.error("Error fetching catalog payments:", error);
+    Swal.fire("Error!", "Failed to fetch records", "error");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   useEffect(() => {
     fetchData();

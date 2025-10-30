@@ -2354,10 +2354,22 @@ export default function GetPayments() {
       },
       {
         Header: "Total Amount",
-        accessor: "totalPayAmountWithTax",
+        accessor: "totalWithTax",
         Cell: ({ value }) => `₹ ${value ? value.toLocaleString() : '0'}`,
         className: "wd-15p borderrigth",
       },
+      //  {
+      //   Header: "amount_allocated",
+      //   accessor: "amount_allocated",
+      //   Cell: ({ value }) => `₹ ${value ? value.toLocaleString() : '0'}`,
+      //   className: "wd-15p borderrigth",
+      // },
+      // {
+      //   Header: "gram_allocated",
+      //   accessor: "gram_allocated",
+      //   Cell: ({ value }) => `₹ ${value ? value.toLocaleString() : '0'}`,
+      //   className: "wd-15p borderrigth",
+      // },
       {
         Header: "Grams",
         accessor: "gram",
@@ -2466,6 +2478,7 @@ export default function GetPayments() {
             mobile: p.mobile || "N/A",
             amount: p.amount || 0,
             taxAmount: p.taxAmount || 0,
+            totalWithTax: p.totalWithTax || 0,
             totalPayAmountWithTax: p.totalPayAmountWithTax || 0,
             name: p.name || "N/A",
             status: p.status || "Pending",
