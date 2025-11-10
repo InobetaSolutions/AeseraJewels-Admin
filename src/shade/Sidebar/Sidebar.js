@@ -217,7 +217,7 @@ const Sidebar = () => {
              Aesera Jewels
               </div> */}
               <img
-                src={require("../../assets/img/brand/logo5124.png")}
+                src={require("../../assets/img/brand/gold_point_4k 3 1.png")}
                 className="main-logo  desktop-logo"
                 alt="logo"
               /> 

@@ -123,7 +123,7 @@ export default function Header() {
             <Link to={`${process.env.PUBLIC_URL}/dashboard/dashboard-1`} className="header-logo">
               <img
                 // src={require("../../assets/img/brand/logo.png")}
-                src={require("../../assets/img/brand/logo5124.png")}
+                src={require("../../assets/img/brand/gold_point_4k 3 1.png")}
                 className="mobile-logo logo-1"
                 alt="logo"
               />
