@@ -74,7 +74,7 @@ const SignIn = () => {
                       <div className="d-flex justify-content-center align-items-center mb-4">
                         <Link to="#">
                           <img
-                            src={require("../assets/img/brand/logo5124.png")}
+                            src={require("../assets/img/brand/gold_point_4k 3 1.png")}
                             className="sign-favicon ht-40"
                             alt="logo"
                           />
