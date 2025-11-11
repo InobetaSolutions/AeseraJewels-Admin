@@ -475,7 +475,7 @@ export default function Header() {
             </Modal>
         </>
                 </li>
-                <li className="dropdown nav-item">
+                {/* <li className="dropdown nav-item">
                   <Link
                     to="#"
                     className="new nav-link theme-layout nav-link-bg layout-setting"
@@ -504,7 +504,7 @@ export default function Header() {
                       </svg>
                     </span>
                   </Link>
-                </li>
+                </li> */}
                 <Dropdown className=" nav-item main-header-notification d-flex">
                   {/* <Dropdown.Toggle className="new nav-link" to="#" variant="">
                     <>
