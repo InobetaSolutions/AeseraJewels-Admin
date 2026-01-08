@@ -23,7 +23,9 @@ const Dashboard3 = React.lazy(() =>
 );
 //App
 const Cards = React.lazy(() => import("./components/App/Cards/Cards"));
-const Contact = React.lazy(() => import("./components/App/AllFiles/ContactManagement/Contact.js"));
+const Contact = React.lazy(() =>
+  import("./components/App/AllFiles/ContactManagement/Contact.js")
+);
 const Filedetails = React.lazy(() =>
   import("./components/App/File-details/Filedetails")
 );
@@ -424,6 +426,36 @@ const CustomerCollectedAmount = React.lazy(() =>
 const PaymentHistory = React.lazy(() =>
   import("./components/App/AllFiles/Payment Managment/PaymentHistory")
 );
+const OtherChargesadd = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/OtherChargesadd.js")
+);
+
+const AddPaymentcharges = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/AddPaymentcharges.js")
+);
+
+const Sold = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/Sold.js")
+);
+
+
+const UpdatePaymentcharges = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/UpdatePaymentcharges.js")
+);
+
+const UpdateOtherCharges = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/UpdateOtherCharges.js")
+);
+
+const SoldManagement = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/SoldManagement.js")
+);
+const PaymentCharges = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/PaymentCharges.js")
+);
+const OtherCharges = React.lazy(() =>
+  import("./components/App/AllFiles/Sold Management/OtherCharges.js")
+);
 const Addamc = React.lazy(() =>
   import("./components/App/AllFiles/CatalogManagment/Addamc.js")
 );
@@ -527,32 +559,32 @@ root.render(
               <Route
                 path={`${process.env.PUBLIC_URL}/app/Delivery`}
                 element={<Delivery />}
-                />
+              />
 
-                <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/AddAmount`}
                 element={<AddAmount />}
-                />
+              />
 
-                <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/UpdateAmount/:id`}
                 element={<UpdateAmount />}
-                />  
+              />
 
-                <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/Tax`}
                 element={<Tax />}
-                />
+              />
 
-                <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/AddTax`}
                 element={<AddTax />}
-                />
+              />
 
-                <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/UpdateTax/:id`}
                 element={<UpdateTax />}
-                />
+              />
 
               <Route
                 path={`${process.env.PUBLIC_URL}/app/Addbanners`}
@@ -569,12 +601,12 @@ root.render(
                 element={<PaymentManagemnt />}
               />
 
-               <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/Approved`}
                 element={<Approved />}
               />
 
-               <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/Cancel`}
                 element={<Cancel />}
               />
@@ -582,6 +614,46 @@ root.render(
               <Route
                 path={`${process.env.PUBLIC_URL}/app/PaymentHistory`}
                 element={<PaymentHistory />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/SoldManagement`}
+                element={<SoldManagement />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/PaymentCharges`}
+                element={<PaymentCharges />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/OtherCharges`}
+                element={<OtherCharges />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/OtherChargesadd`}
+                element={<OtherChargesadd />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/addPaymentcharges`}
+                element={<AddPaymentcharges />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/Sold`}
+                element={<Sold />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/UpdatePaymentcharges/:id`}
+                element={<UpdatePaymentcharges />}
+              />
+
+              <Route
+                path={`${process.env.PUBLIC_URL}/app/UpdateOtherCharges/:id`}
+                element={<UpdateOtherCharges />}
               />
 
               <Route
@@ -612,24 +684,22 @@ root.render(
                 path={`${process.env.PUBLIC_URL}/app/CatalogManagment`}
                 element={<CatalogManagment />}
               />
-               <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/GetCatalogPayment`}
                 element={<GetCatalogPayment />}
               />
 
-               <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/ApprovedCatalog`}
                 element={<ApprovedCatalog />}
               />
 
-                 <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/Cancelcatalog`}
                 element={<Cancelcatalog />}
               />
 
-                
-
-               <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/CatalogAlloment`}
                 element={<CatalogAlloment />}
               />
@@ -639,7 +709,7 @@ root.render(
                 element={<ViewCatolog />}
               />
 
-               <Route
+              <Route
                 path={`${process.env.PUBLIC_URL}/app/CatalogManagment/Addamc`}
                 element={<Addamc />}
               />

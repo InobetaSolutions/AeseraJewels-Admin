@@ -87,7 +87,7 @@ export const MENUITEMS = [
         active: false,
         selected: false,
       },
-       {
+      {
         title: <span style={{ color: "#082038" }}>Approved Management</span>,
         icon: (
           <svg
@@ -108,7 +108,7 @@ export const MENUITEMS = [
         active: false,
         selected: false,
       },
-       {
+      {
         title: <span style={{ color: "#082038" }}>Cancel Management</span>,
         icon: (
           <svg
@@ -666,7 +666,7 @@ export const MENUITEMS = [
     ],
   },
 
-     {
+  {
     menutitle: "Coin Procurement",
     Items: [
       // {
@@ -713,7 +713,7 @@ export const MENUITEMS = [
         selected: false,
       },
 
-        {
+      {
         title: <span style={{ color: "#082038" }}>Approved Payment</span>,
         icon: (
           <svg
@@ -735,7 +735,7 @@ export const MENUITEMS = [
         selected: false,
       },
 
-        {
+      {
         title: <span style={{ color: "#082038" }}>Cancel Payment</span>,
         icon: (
           <svg
@@ -756,10 +756,8 @@ export const MENUITEMS = [
         active: false,
         selected: false,
       },
-      
 
-
-       {
+      {
         title: <span style={{ color: "#082038" }}>Coin Allotment</span>,
         icon: (
           <svg
@@ -780,7 +778,6 @@ export const MENUITEMS = [
         active: false,
         selected: false,
       },
-
 
       // {
       //   title: "Management",
@@ -1296,6 +1293,97 @@ export const MENUITEMS = [
     ],
   },
 
+  {
+    menutitle: "Sold Management",
+    Items: [
+      {
+        title: <span style={{ color: "#082038" }}>Sold Management</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/SoldManagement`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+      {
+        title: <span style={{ color: "#082038" }}>Approved Sold</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/Sold`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+      {
+        title: <span style={{ color: "#082038" }}>Payment Charges</span>,
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="side-menu__icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+              style={{ fill: "#082038" }}
+            />
+          </svg>
+        ),
+        path: `${process.env.PUBLIC_URL}/app/PaymentCharges`,
+        type: "link",
+        active: false,
+        selected: false,
+      },
+      // {
+      //   title: <span style={{ color: "#082038" }}>Other Charges</span>,
+      //   icon: (
+      //     <svg
+      //       xmlns="http://www.w3.org/2000/svg"
+      //       className="side-menu__icon"
+      //       width="24"
+      //       height="24"
+      //       viewBox="0 0 24 24"
+      //     >
+      //       <path
+      //         d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"
+      //         style={{ fill: "#082038" }}
+      //       />
+      //     </svg>
+      //   ),
+      //   path: `${process.env.PUBLIC_URL}/app/OtherCharges`,
+      //   type: "link",
+      //   active: false,
+      //   selected: false,
+      // },
+
+    ],
+  },
+
   // {
   //   menutitle: "Catalog Procurement",
   //   Items: [
@@ -1386,8 +1474,6 @@ export const MENUITEMS = [
   //       active: false,
   //       selected: false,
   //     },
-      
-
 
   //      {
   //       title: <span style={{ color: "#082038" }}>Catalog Allotment</span>,
@@ -1410,7 +1496,6 @@ export const MENUITEMS = [
   //       active: false,
   //       selected: false,
   //     },
-
 
   //     // {
   //     //   title: "Management",
@@ -1973,8 +2058,10 @@ export const MENUITEMS = [
         selected: false,
       },
 
-       {
-        title: <span style={{ color: "#082038" }}>Delivery Charge Management</span>,
+      {
+        title: (
+          <span style={{ color: "#082038" }}>Delivery Charge Management</span>
+        ),
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -1995,7 +2082,7 @@ export const MENUITEMS = [
         selected: false,
       },
 
-       {
+      {
         title: <span style={{ color: "#082038" }}>Tax Management</span>,
         icon: (
           <svg
@@ -2530,10 +2617,6 @@ export const MENUITEMS = [
       // },
     ],
   },
-
-
-
-  
 
   // {
   //   menutitle: "PAGES",

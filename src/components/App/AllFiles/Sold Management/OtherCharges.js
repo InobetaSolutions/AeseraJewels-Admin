@@ -1,0 +1,335 @@
+
+// import React, { useEffect, useState, Fragment } from "react";
+// import { Card } from "react-bootstrap";
+// import { useNavigate } from "react-router-dom";
+
+// export default function Catalog() {
+//   const [data, setData] = useState([]);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     fetchSupport();
+//   }, []);
+
+//   // Fetch support records
+//   const fetchSupport = async () => {
+//     try {
+//       const response = await fetch("http://13.204.96.244:3000/api/getSupport", {
+//         method: "POST",
+//         redirect: "follow",
+//       });
+
+//       const result = await response.json();
+//       if (result.data) {
+//         const records = Array.isArray(result.data) ? result.data : [result.data];
+//         setData(records);
+//       } else {
+//         setData([]);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching support data:", error);
+//     }
+//   };
+
+//   // Navigate to Add Contact page
+//   const handleAddContact = () => {
+//     navigate(`${process.env.PUBLIC_URL}/app/OtherChargesadd`);
+//   };
+
+//   // Navigate to Update Contact page with state
+//   const handleEditContact = (item) => {
+//     navigate(`${process.env.PUBLIC_URL}/app/OtherChargesupdate/${item._id}`, {
+//       state: item,
+//     });
+//   };
+
+//   // Delete contact
+//   const handleDeleteContact = async (id) => {
+//     if (!window.confirm("Are you sure you want to delete this contact?")) return;
+
+//     try {
+//       const response = await fetch("http://13.204.96.244:3000/api/deleteSupport", {
+//         method: "DELETE",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ id }),
+//       });
+
+//       const result = await response.json();
+//       console.log("Deleted:", result);
+
+//       // Remove deleted record from state immediately
+//       setData((prevData) => prevData.filter((item) => item._id !== id));
+
+//       alert(result.message || "Contact deleted successfully");
+//     } catch (error) {
+//       console.error("Error deleting contact:", error);
+//       alert("Failed to delete contact.");
+//     }
+//   };
+
+//   return (
+//     <Fragment>
+//       <Card>
+//         <Card.Body>
+//           {/* Title + Add Contact button */}
+//           <div className="d-flex justify-content-between align-items-center mb-4">
+//             <div
+//               className="card-title main-content-label"
+//               style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
+//             >
+//               Support Records
+//             </div>
+//             <button
+//               onClick={handleAddContact}
+//               className="me-2"
+//               style={{
+//                 backgroundColor: "#082038",
+//                 border: "1px solid #082038",
+//                 color: "#fff",
+//                 padding: "0.375rem 0.75rem",
+//                 borderRadius: "0.25rem",
+//                 cursor: "pointer",
+//               }}
+//             >
+//               Add OtherCharges
+//             </button>
+//           </div>
+
+//           {/* Table */}
+//           <div className="table-responsive mt-3">
+//             <table className="table table-bordered">
+//               <thead>
+//                 <tr>
+//                   <th>S.No</th>
+//                   <th>Email</th>
+//                   <th>Mobile</th>
+//                   <th>Actions</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {data.length > 0 ? (
+//                   data.map((item, index) => (
+//                     <tr key={item._id || index}>
+//                       <td>{index + 1}</td>
+//                       <td>{item.email || "—"}</td>
+//                       <td>{item.mobile || "—"}</td>
+//                       <td>
+//                         <button
+//                           onClick={() => handleEditContact(item)}
+//                           style={{
+//                             backgroundColor: "#ffc107",
+//                             border: "1px solid #ffc107",
+//                             color: "#fff",
+//                             padding: "0.25rem 0.5rem",
+//                             borderRadius: "0.25rem",
+//                             cursor: "pointer",
+//                             marginRight: "0.5rem",
+//                           }}
+//                         >
+//                           Edit
+//                         </button>
+//                         <button
+//                           onClick={() => handleDeleteContact(item._id)}
+//                           style={{
+//                             backgroundColor: "#dc3545",
+//                             border: "1px solid #dc3545",
+//                             color: "#fff",
+//                             padding: "0.25rem 0.5rem",
+//                             borderRadius: "0.25rem",
+//                             cursor: "pointer",
+//                           }}
+//                         >
+//                           Delete
+//                         </button>
+//                       </td>
+//                     </tr>
+//                   ))
+//                 ) : (
+//                   <tr>
+//                     <td colSpan="4" className="text-center">
+//                       No records found
+//                     </td>
+//                   </tr>
+//                 )}
+//               </tbody>
+//             </table>
+//           </div>
+//         </Card.Body>
+//       </Card>
+//     </Fragment>
+//   );
+// }
+
+
+import React, { useEffect, useState, Fragment } from "react";
+import { Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
+export default function Catalog() {
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchOtherCharges();
+  }, []);
+
+  // 🔹 Fetch Other Charges (NEW API)
+  const fetchOtherCharges = async () => {
+    try {
+      const response = await fetch(
+        "http://13.204.96.244:3000/api/getOtherCharges",
+        {
+          method: "GET",
+          redirect: "follow",
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.otherCharges) {
+        const records = Array.isArray(result.otherCharges)
+          ? result.otherCharges
+          : [result.otherCharges];
+
+        setData(records);
+      } else {
+        setData([]);
+      }
+    } catch (error) {
+      console.error("Error fetching other charges:", error);
+    }
+  };
+
+  // Navigate to Add page
+  const handleAddContact = () => {
+    navigate(`${process.env.PUBLIC_URL}/app/OtherChargesadd`);
+  };
+
+  // Navigate to Update page
+  const handleEditContact = (item) => {
+    navigate(
+      `${process.env.PUBLIC_URL}/app/UpdateOtherCharges/${item._id}`,
+      { state: item }
+    );
+  };
+
+  // 🔹 Delete Other Charges
+  const handleDeleteContact = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this contact?")) return;
+
+    try {
+      const response = await fetch(
+        "http://13.204.96.244:3000/api/deleteOtherCharges",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
+
+      const result = await response.json();
+
+      setData((prev) => prev.filter((item) => item._id !== id));
+      alert(result.message || "Deleted successfully");
+    } catch (error) {
+      console.error("Error deleting:", error);
+      alert("Failed to delete record");
+    }
+  };
+
+  return (
+    <Fragment>
+      <Card>
+        <Card.Body>
+          {/* Title + Add button */}
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <div
+              className="card-title main-content-label"
+              style={{ fontSize: "1.25rem", paddingLeft: 10, color: "#082038" }}
+            >
+              Other Charges
+            </div>
+            <button
+              onClick={handleAddContact}
+              className="me-2"
+              style={{
+                backgroundColor: "#082038",
+                border: "1px solid #082038",
+                color: "#fff",
+                padding: "0.375rem 0.75rem",
+                borderRadius: "0.25rem",
+                cursor: "pointer",
+              }}
+            >
+              Add OtherCharges
+            </button>
+          </div>
+
+          {/* Table */}
+          <div className="table-responsive mt-3">
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  {/* <th>Email</th> */}
+                  <th>value</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.length > 0 ? (
+                  data.map((item, index) => (
+                    <tr key={item._id}>
+                      <td>{index + 1}</td>
+                      {/* <td>—</td> */}
+                      <td>{item.value}</td>
+                      <td>
+                        <button
+                          onClick={() => handleEditContact(item)}
+                          style={{
+                            backgroundColor: "#ffc107",
+                            border: "1px solid #ffc107",
+                            color: "#fff",
+                            padding: "0.25rem 0.5rem",
+                            borderRadius: "0.25rem",
+                            cursor: "pointer",
+                            marginRight: "0.5rem",
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteContact(item._id)}
+                          style={{
+                            backgroundColor: "#dc3545",
+                            border: "1px solid #dc3545",
+                            color: "#fff",
+                            padding: "0.25rem 0.5rem",
+                            borderRadius: "0.25rem",
+                            cursor: "pointer",
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="4" className="text-center">
+                      No records found
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </Card.Body>
+      </Card>
+    </Fragment>
+  );
+}
