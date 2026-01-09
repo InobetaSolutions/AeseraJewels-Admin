@@ -525,6 +525,7 @@ export default function Catalog() {
         const formatted = result.data.map((item, index) => ({
           _id: item._id,
           serial: index + 1,
+          user_name: item.user_name || "—",
           mobileNumber: item.mobileNumber || "—",
           amount: item.amount || 0,
           paymentGatewayCharges: item.paymentGatewayCharges || 0,
@@ -595,6 +596,7 @@ export default function Catalog() {
   // 🔹 Table Columns
   const COLUMNS = useMemo(() => [
     { Header: "S.No", accessor: "serial" },
+     { Header: "Name", accessor: "user_name" },
     { Header: "Mobile Number", accessor: "mobileNumber" },
     { Header: "Amount", accessor: "amount" },
     { Header: "Gateway Charges", accessor: "paymentGatewayCharges" },
