@@ -8,17 +8,36 @@ export default function GetUsers() {
   const [modalError, setModalError] = useState("");
   const [detailedData, setDetailedData] = useState(null);
   const [selectedMobile, setSelectedMobile] = useState("");
+  const [selectedName, setSelectedName] = useState("");
   const [downloadLoading, setDownloadLoading] = useState(false);
-  // Add state for date range
+  
+  // Date range state
   const [dateRange, setDateRange] = useState({
-    start_date: "2026-01-01",
-    end_date: "2026-01-31"
+    start_date: "",
+    end_date: ""
   });
+
+  // Initialize date range with current month on component mount
+  useEffect(() => {
+    const today = new Date();
+    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    
+    const formatDate = (date) => {
+      return date.toISOString().split('T')[0];
+    };
+    
+    setDateRange({
+      start_date: formatDate(firstDay),
+      end_date: formatDate(lastDay)
+    });
+  }, []);
 
   const handleCloseModal = () => {
     setShowModal(false);
     setDetailedData(null);
     setSelectedMobile("");
+    setSelectedName("");
     setDownloadLoading(false);
   };
 
@@ -32,24 +51,38 @@ export default function GetUsers() {
     userSelect: "none",
   };
 
-  // ⭐ UPDATED DOWNLOAD FUNCTION - Now uses POST with JSON body
+  // Download Excel report
   const downloadCSV = async () => {
     if (!selectedMobile) {
       alert("No mobile number selected");
       return;
     }
 
+    if (!dateRange.start_date || !dateRange.end_date) {
+      alert("Please select both start and end dates");
+      return;
+    }
+
+    // Validate date range
+    if (new Date(dateRange.start_date) > new Date(dateRange.end_date)) {
+      alert("Start date cannot be later than end date");
+      return;
+    }
+
     setDownloadLoading(true);
 
     try {
-      // Prepare the request body as per your requirement
+      // Prepare the request body
       const requestBody = {
         mobile: selectedMobile,
+        name: selectedName,
         start_date: dateRange.start_date,
         end_date: dateRange.end_date
       };
 
-      // Fetch Excel data from the API using POST with JSON body
+      console.log("Sending request body:", requestBody);
+
+      // Fetch Excel data from the API
       const response = await fetch(
         "http://13.204.96.244:3000/api/generate-transaction-report",
         {
@@ -62,17 +95,29 @@ export default function GetUsers() {
       );
 
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        const errorText = await response.text();
+        throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
       }
 
       // Get the blob from response
       const blob = await response.blob();
       
+      // Create filename with customer name and date range
+      const cleanName = selectedName
+        .replace(/[/\\?%*:|"<>]/g, '') // Remove problematic characters
+        .replace(/\s+/g, '_') // Replace spaces with underscores
+        .trim();
+      
+      const startDateFormatted = dateRange.start_date.replace(/-/g, '');
+      const endDateFormatted = dateRange.end_date.replace(/-/g, '');
+      
+      const filename = `transaction_report_${cleanName}_${startDateFormatted}_to_${endDateFormatted}.xlsx`;
+      
       // Create and download the Excel file
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `transaction_report_${selectedMobile}_${dateRange.start_date}_to_${dateRange.end_date}.xlsx`;
+      a.download = filename;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -88,9 +133,10 @@ export default function GetUsers() {
     }
   };
 
-  // ⭐ FETCH DETAILS + OPEN MODAL
-  const handleView = async (mobile) => {
+  // Fetch details and open modal
+  const handleView = async (mobile, name) => {
     setSelectedMobile(mobile);
+    setSelectedName(name || "");
     setShowModal(true);
     setModalLoading(true);
     setModalError("");
@@ -128,7 +174,7 @@ export default function GetUsers() {
     setModalLoading(false);
   };
 
-  // ⭐ TABLE COLUMNS
+  // Table columns
   const COLUMNS = useMemo(
     () => [
       {
@@ -153,7 +199,7 @@ export default function GetUsers() {
         Cell: ({ row }) => (
           <button
             style={customButtonStyle}
-            onClick={() => handleView(row.original.mobile)}
+            onClick={() => handleView(row.original.mobile, row.original.name)}
           >
             View
           </button>
@@ -167,7 +213,7 @@ export default function GetUsers() {
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  // FETCH USERS
+  // Fetch users
   useEffect(() => {
     fetch("http://13.204.96.244:3000/api/get-users")
       .then((res) => res.text())
@@ -307,22 +353,25 @@ export default function GetUsers() {
         
         {/* HEADER WITH DOWNLOAD BUTTON */}
         <Modal.Header closeButton>
-          <Modal.Title>Payment Details – {selectedMobile}</Modal.Title>
+          <Modal.Title>
+            Payment Details – {selectedName} ({selectedMobile})
+          </Modal.Title>
 
           <Button
-            variant="light"
+            variant="primary"
             size="sm"
             style={{ 
               marginLeft: "auto", 
-              fontWeight: "700",
-              minWidth: "150px",
+              fontWeight: "600",
+              minWidth: "160px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "8px"
+              gap: "8px",
+              padding: "8px 16px"
             }}
             onClick={downloadCSV}
-            disabled={downloadLoading || !selectedMobile}
+            disabled={downloadLoading || !selectedMobile || !dateRange.start_date || !dateRange.end_date}
           >
             {downloadLoading ? (
               <>
@@ -336,7 +385,10 @@ export default function GetUsers() {
                 Downloading...
               </>
             ) : (
-              "Download Report"
+              <>
+                <i className="fas fa-download"></i>
+                Download Report
+              </>
             )}
           </Button>
         </Modal.Header>
@@ -351,13 +403,13 @@ export default function GetUsers() {
 
           {modalError && <Alert variant="danger">{modalError}</Alert>}
 
-          {/* Date Range Selector */}
+          {/* Date Range Selector - Always show when modal is open */}
           {!modalLoading && (
-            <div className="mb-3 p-3 border rounded bg-light">
-              <h6 className="mb-3">Select Date Range for Report</h6>
+            <div className="mb-4 p-3 border rounded bg-light">
+              <h6 className="mb-3 fw-bold">Select Date Range for Report</h6>
               <div className="row g-3">
                 <div className="col-md-6">
-                  <label className="form-label">Start Date</label>
+                  <label className="form-label fw-semibold">From Date</label>
                   <input
                     type="date"
                     className="form-control"
@@ -366,10 +418,11 @@ export default function GetUsers() {
                       ...prev,
                       start_date: e.target.value
                     }))}
+                    max={dateRange.end_date}
                   />
                 </div>
                 <div className="col-md-6">
-                  <label className="form-label">End Date</label>
+                  <label className="form-label fw-semibold">To Date</label>
                   <input
                     type="date"
                     className="form-control"
@@ -378,43 +431,79 @@ export default function GetUsers() {
                       ...prev,
                       end_date: e.target.value
                     }))}
+                    min={dateRange.start_date}
                   />
                 </div>
               </div>
-              <div className="mt-2 text-muted small">
-                Report will be generated for: {dateRange.start_date} to {dateRange.end_date}
+              <div className="mt-3 text-muted small d-flex justify-content-between align-items-center">
+                <div>
+                  <i className="fas fa-info-circle me-1"></i>
+                  Report will include transactions from <strong>{dateRange.start_date}</strong> to <strong>{dateRange.end_date}</strong>
+                </div>
+                <div className="text-end">
+                  <button 
+                    className="btn btn-sm btn-outline-secondary"
+                    onClick={() => {
+                      const today = new Date();
+                      const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+                      const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                      
+                      const formatDate = (date) => {
+                        return date.toISOString().split('T')[0];
+                      };
+                      
+                      setDateRange({
+                        start_date: formatDate(firstDay),
+                        end_date: formatDate(lastDay)
+                      });
+                    }}
+                  >
+                    Reset to Current Month
+                  </button>
+                </div>
               </div>
             </div>
           )}
 
           {/* PAYMENT TABLE */}
           {detailedData && !modalLoading && (
-            <div className="table-responsive">
-              <table className="table mb-0" style={{ width: "100%" }}>
-                <thead style={{ background: "#f5f6fa" }}>
-                  <tr>
-                    <th style={{ padding: "12px", userSelect: "none" }}>SL No</th>
-                    <th style={{ padding: "12px", userSelect: "none" }}>Timestamp</th>
-                    <th style={{ padding: "12px", userSelect: "none" }}>Invest Amount</th>
-                    <th style={{ padding: "12px", userSelect: "none" }}>Received Gold(gm)</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {detailedData.payments.map((p, index) => (
-                    <tr key={index}>
-                      <td style={{ padding: "12px" }}>{index + 1}</td>
-                      <td style={{ padding: "12px" }}>{p.timestamp || "-"}</td>
-                      <td style={{ padding: "12px" }}>
-                        ₹{p.amount.toFixed(2)}
-                      </td>
-                      <td style={{ padding: "12px" }}>
-                        {p.totalGrams ? `${p.totalGrams}g` : "-"}
-                      </td>
+            <div className="mt-4">
+              {/* <h6 className="mb-3 fw-bold">Recent Transactions</h6>
+              <div className="table-responsive">
+                <table className="table table-hover mb-0" style={{ width: "100%" }}>
+                  <thead style={{ background: "#f5f6fa" }}>
+                    <tr>
+                      <th style={{ padding: "12px", userSelect: "none", fontWeight: "600" }}>SL No</th>
+                      <th style={{ padding: "12px", userSelect: "none", fontWeight: "600" }}>Timestamp</th>
+                      <th style={{ padding: "12px", userSelect: "none", fontWeight: "600" }}>Invest Amount</th>
+                      <th style={{ padding: "12px", userSelect: "none", fontWeight: "600" }}>Received Gold(gm)</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+
+                  <tbody>
+                    {detailedData.payments.length > 0 ? (
+                      detailedData.payments.map((p, index) => (
+                        <tr key={index}>
+                          <td style={{ padding: "12px" }}>{index + 1}</td>
+                          <td style={{ padding: "12px" }}>{p.timestamp || "-"}</td>
+                          <td style={{ padding: "12px", fontWeight: "500" }}>
+                            ₹{p.amount.toFixed(2)}
+                          </td>
+                          <td style={{ padding: "12px", fontWeight: "500" }}>
+                            {p.totalGrams ? `${p.totalGrams.toFixed(2)}g` : "-"}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={4} className="text-center py-3 text-muted">
+                          No transaction records found
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div> */}
             </div>
           )}
         </Modal.Body>
