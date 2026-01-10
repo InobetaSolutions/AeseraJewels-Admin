@@ -201,7 +201,7 @@ export default function GetUsers() {
             style={customButtonStyle}
             onClick={() => handleView(row.original.mobile, row.original.name)}
           >
-            View
+            Report
           </button>
         ),
         width: 100,
