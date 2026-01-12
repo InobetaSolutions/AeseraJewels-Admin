@@ -34,7 +34,7 @@ export default function ApprovedSellPayments() {
           amount: item.amount || 0,
           paymentGatewayCharges: item.paymentGatewayCharges || 0,
           taxAmount: item.taxAmount || 0,
-          otherCharges: item.otherCharges || 0,
+          deliveryCharges: item.deliveryCharges || 0,
           paymentStatus: item.paymentStatus || "—",
           timestamp: item.timestamp || "—",
         }));
@@ -61,7 +61,7 @@ export default function ApprovedSellPayments() {
       { Header: "Amount (₹)", accessor: "amount" },
       { Header: "Gateway Charges (₹)", accessor: "paymentGatewayCharges" },
       { Header: "Tax Amount (₹)", accessor: "taxAmount" },
-      { Header: "Other Charges (₹)", accessor: "otherCharges" },
+      { Header: "Other Charges (₹)", accessor: "deliveryCharges" },
       { Header: "Status", accessor: "paymentStatus" },
     //   { Header: "Approved Time", accessor: "timestamp" },
     ];

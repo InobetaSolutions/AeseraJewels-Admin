@@ -268,7 +268,7 @@ export default function GetUsers() {
     setPageSize,
   } = tableInstance;
 
-  const { pageIndex, pageSize } = state;
+  const { pageIndex, pageSize: currentPageSize } = state;
 
   return (
     <Fragment>
@@ -344,6 +344,64 @@ export default function GetUsers() {
                 )}
               </tbody>
             </table>
+          </div>
+
+          {/* PAGINATION CONTROLS */}
+          <div className="d-flex justify-content-between align-items-center mt-3">
+            {/* Page Size Dropdown */}
+            <div className="d-flex">
+              <select
+                className="selectpage border me-1 p-2"
+                value={currentPageSize}
+                onChange={(e) => setPageSize(Number(e.target.value))}
+              >
+                {[10, 25, 50].map((size) => (
+                  <option key={size} value={size}>
+                    Show {size}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Page Navigation */}
+            <div className="d-flex align-items-center gap-2">
+              <button
+                className="btn btn-sm btn-outline-primary"
+                onClick={() => gotoPage(0)}
+                disabled={!canPreviousPage}
+              >
+                {"<<"}
+              </button>
+
+              <button
+                className="btn btn-sm btn-outline-primary"
+                onClick={() => previousPage()}
+                disabled={!canPreviousPage}
+              >
+                Prev
+              </button>
+
+              <span className="mx-2">
+                Page <strong>{pageIndex + 1}</strong> of{" "}
+                <strong>{pageOptions.length}</strong>
+              </span>
+
+              <button
+                className="btn btn-sm btn-outline-primary"
+                onClick={() => nextPage()}
+                disabled={!canNextPage}
+              >
+                Next
+              </button>
+
+              <button
+                className="btn btn-sm btn-outline-primary"
+                onClick={() => gotoPage(pageCount - 1)}
+                disabled={!canNextPage}
+              >
+                {">>"}
+              </button>
+            </div>
           </div>
         </Card.Body>
       </Card>
@@ -468,7 +526,7 @@ export default function GetUsers() {
           {/* PAYMENT TABLE */}
           {detailedData && !modalLoading && (
             <div className="mt-4">
-              {/* <h6 className="mb-3 fw-bold">Recent Transactions</h6>
+              <h6 className="mb-3 fw-bold">Recent Transactions</h6>
               <div className="table-responsive">
                 <table className="table table-hover mb-0" style={{ width: "100%" }}>
                   <thead style={{ background: "#f5f6fa" }}>
@@ -503,7 +561,7 @@ export default function GetUsers() {
                     )}
                   </tbody>
                 </table>
-              </div> */}
+              </div>
             </div>
           )}
         </Modal.Body>
